@@ -1,0 +1,153 @@
+# Copyright (C) 2015 SOF Quotes
+# This file is distributed under the same license as the SOF Quotes package.
+msgid ""
+msgstr ""
+"Project-Id-Version: SOF Quotes 0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sof-quotes\n"
+"POT-Creation-Date: 2015-10-27 21:59:36+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: includes/sof-quotes-cpt.php:105 includes/sof-quotes-cpt.php:117
+msgid "Quotes"
+msgstr ""
+
+#: includes/sof-quotes-cpt.php:106
+msgid "Quote"
+msgstr ""
+
+#: includes/sof-quotes-cpt.php:107
+msgctxt "quote"
+msgid "Add New"
+msgstr ""
+
+#: includes/sof-quotes-cpt.php:108
+msgid "Add New Quote"
+msgstr ""
+
+#: includes/sof-quotes-cpt.php:109
+msgid "Edit Quote"
+msgstr ""
+
+#: includes/sof-quotes-cpt.php:110
+msgid "New Quote"
+msgstr ""
+
+#: includes/sof-quotes-cpt.php:111
+msgid "All Quotes"
+msgstr ""
+
+#: includes/sof-quotes-cpt.php:112
+msgid "View Quote"
+msgstr ""
+
+#: includes/sof-quotes-cpt.php:113
+msgid "Search Quotes"
+msgstr ""
+
+#: includes/sof-quotes-cpt.php:114
+msgid "No matching Quote found"
+msgstr ""
+
+#: includes/sof-quotes-cpt.php:115
+msgid "No Quotes found in Trash"
+msgstr ""
+
+#: includes/sof-quotes-cpt.php:166
+msgid "Quote updated. <a href=\"%s\">View quote</a>"
+msgstr ""
+
+#: includes/sof-quotes-cpt.php:171
+msgid "Custom field updated."
+msgstr ""
+
+#: includes/sof-quotes-cpt.php:172
+msgid "Custom field deleted."
+msgstr ""
+
+#: includes/sof-quotes-cpt.php:173
+msgid "Quote updated."
+msgstr ""
+
+#. translators: %s: date and time of the revision
+
+#: includes/sof-quotes-cpt.php:181
+msgid "Quote restored to revision from %s"
+msgstr ""
+
+#: includes/sof-quotes-cpt.php:190
+msgid "Quote published. <a href=\"%s\">View quote</a>"
+msgstr ""
+
+#: includes/sof-quotes-cpt.php:195
+msgid "Quote saved."
+msgstr ""
+
+#: includes/sof-quotes-cpt.php:199
+msgid "Quote submitted. <a target=\"_blank\" href=\"%s\">Preview quote</a>"
+msgstr ""
+
+#: includes/sof-quotes-cpt.php:205
+msgid "Quote scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">Preview quote</a>"
+msgstr ""
+
+#. translators: Publish box date format, see http:php.net/date
+
+#: includes/sof-quotes-cpt.php:207
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: includes/sof-quotes-cpt.php:214
+msgid "Quote draft updated. <a target=\"_blank\" href=\"%s\">Preview quote</a>"
+msgstr ""
+
+#: includes/sof-quotes-metaboxes.php:78
+msgid "Featured"
+msgstr ""
+
+#: includes/sof-quotes-metaboxes.php:124
+msgid "Make quote featured"
+msgstr ""
+
+#: includes/sof-quotes-metaboxes.php:139
+msgid "Shortcode"
+msgstr ""
+
+#: widgets/sof-quotes-widget.php:39
+msgid "Quote (Random Featured)"
+msgstr ""
+
+#: widgets/sof-quotes-widget.php:43
+msgid "Use this widget to show a random featured quote."
+msgstr ""
+
+#: widgets/sof-quotes-widget.php:150
+msgid "Featured Quote"
+msgstr ""
+
+#: widgets/sof-quotes-widget.php:156
+msgid "Title:"
+msgstr ""
+#. Plugin Name of the plugin/theme
+msgid "SOF Quotes"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://spiritoffootball.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Provides Quotes and associated functionality."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Christian Wach"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://haystack.co.uk"
+msgstr ""
