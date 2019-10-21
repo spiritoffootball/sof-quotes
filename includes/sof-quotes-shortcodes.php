@@ -103,6 +103,9 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 
 			while ( $quotes->have_posts() ) : $quotes->the_post(); ?>
 
+				<style>
+				.quote cite:before { content: '- '; }
+				</style>
 				<article <?php post_class( $class ); ?> id="post-<?php the_ID(); ?>" style="position: relative;">
 					<div class="entry-content">
 						<?php edit_post_link( __( 'Edit Quote', 'sof-quotes' ), '<span class="edit-link" style="position: absolute; top: 4px; right: 4px; text-transform: uppercase;">', '</span>' ); ?>
