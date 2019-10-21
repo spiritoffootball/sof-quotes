@@ -204,7 +204,7 @@ class Spirit_Of_Football_Quotes {
 	public function register_widgets() {
 
 		// Include widgets.
-		require_once( SOF_QUOTES_PATH . 'widgets/sof-quotes-widget.php' );
+		require_once( SOF_QUOTES_PATH . 'widgets/sof-quotes-widget-random.php' );
 
 	}
 

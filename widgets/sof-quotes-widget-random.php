@@ -13,7 +13,7 @@ NOTES
 
 
 /**
- * Makes a custom Widget for displaying a Featured Quote
+ * Makes a custom Widget for displaying a Random Featured Quote.
  *
  * @since 0.1
  */
@@ -22,7 +22,7 @@ class SOF_Quote_Widget extends WP_Widget {
 
 
 	/**
-	 * Constructor registers widget with WordPress
+	 * Constructor registers widget with WordPress.
 	 *
 	 * @since 0.1
 	 */
@@ -31,13 +31,13 @@ class SOF_Quote_Widget extends WP_Widget {
 		// init parent
 		parent::__construct(
 
-			// base ID
-			'sofcic_widget',
+			// Base ID.
+			'sof_random_quote',
 
-			// name
+			// Widget Title.
 			__( 'Quote (Random Featured)', 'sof-quotes' ),
 
-			// args
+			// Args.
 			array(
 				'description' => __( 'Use this widget to show a random featured quote.', 'sof-quotes' ),
 			)
@@ -49,77 +49,82 @@ class SOF_Quote_Widget extends WP_Widget {
 
 
 	/**
-	 * Outputs the HTML for this widget
+	 * Outputs the HTML for this widget.
 	 *
 	 * @since 0.1
 	 *
-	 * @param array $args An array of standard parameters for widgets in this theme
-	 * @param array $instance An array of settings for this widget instance
+	 * @param array $args An array of standard parameters for widgets in this theme.
+	 * @param array $instance An array of settings for this widget instance.
 	 */
 	public function widget( $args, $instance ) {
 
-		// define args for query
-		$boxes_args = array(
+		// Define args for query.
+		$quotes_args = array(
 			'post_type' => 'quote',
 			'no_found_rows' => true,
 			'post_status' => 'publish',
 			'orderby' => 'rand',
-			//'posts_per_page' => 1,
+			'meta_key' => '_featured_quote',
+			'meta_value' => 1,
+			'posts_per_page' => 1,
 		);
 
-		// do query
-		$boxes = new WP_Query( $boxes_args );
+		// Do query.
+		$quotes = new WP_Query( $quotes_args );
 
-		// did we get any results?
-		if ( $boxes->have_posts() ) :
+		// Did we get any results?
+		if ( $quotes->have_posts() ) :
 
-			// get widget title
+			// Get widget title.
 			$title = apply_filters( 'widget_title', $instance['title'] );
 
-			// show before
+			// Show before.
 			echo $args['before_widget'];
 
-			// if we have a title, show it
+			// If we have a title, show it.
 			if ( ! empty( $title ) ) {
 				echo $args['before_title'] . $title . $args['after_title'];
 			}
 
+			// Prevent immediate output.
+			ob_start();
+
 			?>
+			<style>
+			.widget_sof_random_quote ol { list-style: none; margin: 0; padding: 0; }
+			.widget_sof_random_quote blockquote { border: none; line-height: 1.5; }
+			.widget_sof_random_quote cite:before { content: '- '; }
+			</style>
 			<ol>
-			<?php
-
-			while ( $boxes->have_posts() ) : $boxes->the_post();
-
-				// default to empty
-				$val = '';
-				$key = '_featured_quote';
-
-				// override if the custom field already has a value...
-				if ( get_post_meta( get_the_ID(), $key, true ) != '' ) {
-					$val = get_post_meta( get_the_ID(), $key, true );
-				}
-
-				// if featured
-				if ( $val == '1' ) { ?>
-
+				<?php while ( $quotes->have_posts() ) : $quotes->the_post(); ?>
 					<li class="widget-entry-title">
-						<?php get_template_part( 'content', 'quote' ); ?>
-					</li><?php
-
-					break;
-
-				}
-
-			endwhile; ?>
+						<article <?php post_class(); ?> id="post-<?php the_ID(); ?>" style="position: relative;">
+							<div class="entry-content">
+								<?php edit_post_link( __( 'Edit Quote', 'sof-quotes' ), '<span class="edit-link" style="position: absolute; top: 4px; right: 4px; text-transform: uppercase;">', '</span>' ); ?>
+								<?php the_content(); ?>
+							</div><!-- .entry-content -->
+						</article><!-- #post-<?php the_ID(); ?> -->
+					</li>
+				<?php endwhile; ?>
 			</ol>
 			<?php
 
-			// show after
+			// Get the quote.
+			$quote = ob_get_contents();
+
+			// Clean up.
+			ob_end_clean();
+
+			// Give article edit button a class.
+			$quote = str_replace( '<a class="post-edit-link', '<a class="post-edit-link button', $quote );
+
+			// Show markup.
+			echo $quote;
+
+			// Show after.
 			echo $args['after_widget'];
 
-			//print_r( $args ); die();
-
-			// Reset the post globals as this query will have stomped on it
+			// Reset the post globals as this query will have stomped on it.
 			wp_reset_postdata();
 
 		// end check for boxes
