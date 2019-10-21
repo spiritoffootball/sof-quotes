@@ -52,8 +52,12 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 	 *
 	 * @param array $attr The saved shortcode attributes.
 	 * @param str $content The enclosed content of the shortcode.
+	 * @return str $quote The rendered shortcode.
 	 */
 	public function quote_shortcode( $attr, $content = null ) {
+
+		// Init return.
+		$quote = '';
 
 		// Get params.
 		extract( shortcode_atts( array(
@@ -62,35 +66,68 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 		), $attr ) );
 
 		// Kick out if there's anything amiss.
-		if ( $id == '' OR is_feed() ) return;
+		if ( $id == '' OR is_feed() ) {
+			return $quote;
+		}
 
-		// Get the quote.
-		query_posts( 'post_type=quote&p=' . $id );
+		// Define args for query.
+		$query_args = array(
+			'post_type' => 'quote',
+			'p' => $id,
+			'no_found_rows' => true,
+			'post_status' => 'publish',
+			'posts_per_page' => 1,
+		);
 
-		// Set it up.
-		the_post();
-
-		// Prevent immediate output.
-		ob_start();
-
-		// Get the quote.
-		//get_template_part( 'content', 'quote' );
-		include SOF_QUOTES_PATH . 'assets/templates/content-quote.php';
-		$quote = ob_get_contents();
-
-		// Clean up.
-		ob_end_clean();
-		wp_reset_query();
+		// Do query.
+		$quotes = new WP_Query( $query_args );
 
 		// Give class to article.
+		$class = 'alignnone';
 		switch( $align ) {
 			case 'none': $class = 'alignnone'; break;
 			case 'right': $class = 'alignright'; break;
 			case 'left': $class = 'alignleft'; break;
 		}
 
-		// Give it an alignment.
-		$quote = str_replace( '<article class="', '<article class="' . $class . ' ', $quote );
+		// Make sure any theme (other than TwentyEleven) gets no alignment.
+		if ( function_exists( 'bp_core_get_user_domain' ) ) {
+			$class = 'alignnone';
+		}
+
+		// Did we get any results?
+		if ( $quotes->have_posts() ) :
+
+			// Prevent immediate output.
+			ob_start();
+
+			while ( $quotes->have_posts() ) : $quotes->the_post(); ?>
+
+				<article <?php post_class( $class ); ?> id="post-<?php the_ID(); ?>" style="position: relative;">
+					<div class="entry-content">
+						<?php edit_post_link( __( 'Edit Quote', 'sof-quotes' ), '<span class="edit-link" style="position: absolute; top: 4px; right: 4px; text-transform: uppercase;">', '</span>' ); ?>
+						<?php the_content(); ?>
+					</div><!-- .entry-content -->
+				</article><!-- #post-<?php the_ID(); ?> -->
+
+			<?php endwhile;
+
+			// Get the quote.
+			$quote = ob_get_contents();
+
+			// Clean up.
+			ob_end_clean();
+
+		endif;
+
+		// Reset the post globals as this query will have stomped on it.
+		wp_reset_postdata();
+
+		// Give article tag an alignment.
+		//$quote = str_replace( '<article class="', '<article class="' . $class . ' ', $quote );
+
+		// Give article edit button a class.
+		$quote = str_replace( '<a class="post-edit-link', '<a class="post-edit-link button', $quote );
 
 		// --<
 		return $quote;
