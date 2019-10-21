@@ -1,6 +1,6 @@
 <?php /*
 ================================================================================
-Spirit of Football Featured Quote Widget
+Spirit of Football Random Featured Quote Widget
 ================================================================================
 AUTHOR: Christian Wach <needle@haystack.co.uk>
 --------------------------------------------------------------------------------
