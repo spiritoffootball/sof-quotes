@@ -1,12 +1,15 @@
-<?php
-/*
+<?php /*
+--------------------------------------------------------------------------------
 Plugin Name: SOF Quotes
 Plugin URI: http://spiritoffootball.com
 Description: Provides Quotes and associated functionality.
 Author: Christian Wach
 Version: 0.1.1
 Author URI: http://haystack.co.uk
+Text Domain: sof-quotes
+--------------------------------------------------------------------------------
 */
+
 
 
 // Set our version here.
