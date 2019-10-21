@@ -185,14 +185,12 @@ class Spirit_Of_Football_Quotes {
 	 */
 	function translation() {
 
-			// Load translations.
-			load_plugin_textdomain(
-				'sof-quotes', // Unique name.
-				false, // Deprecated argument.
-				dirname( plugin_basename( SOF_QUOTES_FILE ) ) . '/languages/' // Relative path to files.
-			);
-
-		}
+		// Load translations.
+		load_plugin_textdomain(
+			'sof-quotes', // Unique name.
+			false, // Deprecated argument.
+			dirname( plugin_basename( SOF_QUOTES_FILE ) ) . '/languages/' // Relative path to files.
+		);
 
 	}
 

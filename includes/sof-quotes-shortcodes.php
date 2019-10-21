@@ -74,7 +74,8 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 		ob_start();
 
 		// Get the quote.
-		get_template_part( 'content', 'quote' );
+		//get_template_part( 'content', 'quote' );
+		include SOF_QUOTES_PATH . 'assets/templates/content-quote.php';
 		$quote = ob_get_contents();
 
 		// Clean up.
