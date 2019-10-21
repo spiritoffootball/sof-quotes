@@ -1,9 +1,9 @@
 <?php
 
 /**
- * SOF Quotes Custom Post Type Class
+ * SOF Quotes Custom Post Type Class.
  *
- * A class that encapsulates a Custom Post Types for Quotes
+ * A class that encapsulates a Custom Post Types for Quotes.
  *
  * @package WordPress
  * @subpackage SOF
@@ -13,29 +13,29 @@ class Spirit_Of_Football_Quotes_CPT {
 
 
 	/**
-	 * Constructor
+	 * Constructor.
 	 *
 	 * @since 0.1
 	 */
 	public function __construct() {
 
-		// nothing
+		// Nothing.
 
 	}
 
 
 
 	/**
-	 * Register WordPress hooks
+	 * Register WordPress hooks.
 	 *
 	 * @since 0.1
 	 */
 	public function register_hooks() {
 
-		// always create post types
+		// Always create post types.
 		add_action( 'init', array( $this, 'create_post_types' ) );
 
-		// make sure our feedback is appropriate
+		// Make sure our feedback is appropriate.
 		add_filter( 'post_updated_messages', array( $this, 'updated_messages' ) );
 
 	}
@@ -44,16 +44,16 @@ class Spirit_Of_Football_Quotes_CPT {
 
 
 	/**
-	 * Actions to perform on plugin activation
+	 * Actions to perform on plugin activation.
 	 *
 	 * @since 0.1
 	 */
 	public function activate() {
 
-		// pass through
+		// Pass through.
 		$this->create_post_types();
 
-		// go ahead and flush
+		// Go ahead and flush.
 		flush_rewrite_rules();
 
 	}
@@ -67,7 +67,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	 */
 	public function deactivate() {
 
-		// flush rules to reset
+		// Flush rules to reset.
 		flush_rewrite_rules();
 
 	}
@@ -79,19 +79,19 @@ class Spirit_Of_Football_Quotes_CPT {
 
 
 	/**
-	 * Create our Custom Post Types
+	 * Create our Custom Post Types.
 	 *
 	 * @since 0.1
 	 */
 	public function create_post_types() {
 
-		// only call this once
+		// Only call this once.
 		static $registered;
 
-		// bail if already done
+		// Bail if already done.
 		if ( $registered ) return;
 
-		// set up the post type called "Quote"
+		// Set up the post type called "Quote".
 		register_post_type( 'quote',
 
 			array(
@@ -136,7 +136,7 @@ class Spirit_Of_Football_Quotes_CPT {
 
 		//flush_rewrite_rules();
 
-		// flag
+		// Flag.
 		$registered = true;
 
 	}
@@ -144,71 +144,71 @@ class Spirit_Of_Football_Quotes_CPT {
 
 
 	/**
-	 * Override messages for a custom post type
+	 * Override messages for a custom post type.
 	 *
-	 * @param array $messages The existing messages
-	 * @return array $messages The modified messages
+	 * @param array $messages The existing messages.
+	 * @return array $messages The modified messages.
 	 */
 	public function updated_messages( $messages ) {
 
-		// access relevant globals
+		// Access relevant globals.
 		global $post, $post_ID;
 
-		// define custom messages for our custom post type
+		// Define custom messages for our custom post type.
 		$messages['quote'] = array(
 
-			// unused - messages start at index 1
+			// Unused - messages start at index 1.
 			0 => '',
 
-			// item updated
+			// Item updated.
 			1 => sprintf(
 				__( 'Quote updated. <a href="%s">View quote</a>', 'sof-quotes' ),
 				esc_url( get_permalink( $post_ID ) )
 			),
 
-			// custom fields
+			// Custom fields.
 			2 => __( 'Custom field updated.', 'sof-quotes' ),
 			3 => __( 'Custom field deleted.', 'sof-quotes' ),
 			4 => __( 'Quote updated.', 'sof-quotes' ),
 
-			// item restored to a revision
+			// Item restored to a revision.
 			5 => isset( $_GET['revision'] ) ?
 
-					// revision text
+					// Revision text.
 					sprintf(
-						// translators: %s: date and time of the revision
+						// Translators: %s: date and time of the revision.
 						__( 'Quote restored to revision from %s', 'sof-quotes' ),
 						wp_post_revision_title( (int) $_GET['revision'], false )
 					) :
 
-					// no revision
+					// No revision.
 					false,
 
-			// item published
+			// Item published.
 			6 => sprintf(
 				__( 'Quote published. <a href="%s">View quote</a>', 'sof-quotes' ),
 				esc_url( get_permalink( $post_ID ) )
 			),
 
-			// item saved
+			// Item saved.
 			7 => __( 'Quote saved.', 'sof-quotes' ),
 
-			// item submitted
+			// Item submitted.
 			8 => sprintf(
 				__( 'Quote submitted. <a target="_blank" href="%s">Preview quote</a>', 'sof-quotes' ),
 				esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) )
 			),
 
-			// item scheduled
+			// Item scheduled.
 			9 => sprintf(
 				__( 'Quote scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview quote</a>', 'sof-quotes' ),
-				// translators: Publish box date format, see http://php.net/date
+				// Translators: Publish box date format, see http://php.net/date
 				date_i18n( __( 'M j, Y @ G:i' ),
 				strtotime( $post->post_date ) ),
 				esc_url( get_permalink( $post_ID ) )
 			),
 
-			// draft updated
+			// Draft updated.
 			10 => sprintf(
 				__( 'Quote draft updated. <a target="_blank" href="%s">Preview quote</a>', 'sof-quotes' ),
 				esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) )

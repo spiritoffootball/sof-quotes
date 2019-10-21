@@ -1,55 +1,50 @@
 <?php
 
 /**
- * SOF Quotes Metaboxes Class
+ * SOF Quotes Metaboxes Class.
  *
- * A class that encapsulates all Metaboxes for Quotes
+ * A class that encapsulates all Metaboxes for Quotes.
  *
  * @package WordPress
  * @subpackage SOF
  */
 class Spirit_Of_Football_Quotes_Metaboxes {
 
-
-
 	/**
-	 * Featured Quote meta key
+	 * Featured Quote meta key.
 	 *
 	 * @since 0.1
 	 * @access public
-	 * @var str $meta_key The meta key for featured quotes
+	 * @var str $meta_key The meta key for featured quotes.
 	 */
 	public $featured_meta_key = 'featured_quote';
 
 
 
 	/**
-	 * Constructor
+	 * Constructor.
 	 *
 	 * @since 0.1
 	 */
 	public function __construct() {
 
-		// nothing
+		// Nothing.
 
 	}
 
 
 
 	/**
-	 * Register WordPress hooks
+	 * Register WordPress hooks.
 	 *
 	 * @since 0.1
 	 */
 	public function register_hooks() {
 
-		// exclude from SOF eV for now...
-		//if ( 'sofev' == sof_get_site() ) return;
-
-		// add meta boxes
+		// Add meta boxes.
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 
-		// intercept save
+		// Intercept save.
 		add_action( 'save_post', array( $this, 'save_post' ), 1, 2 );
 
 	}
@@ -62,13 +57,13 @@ class Spirit_Of_Football_Quotes_Metaboxes {
 
 
 	/**
-	 * Adds meta boxes to admin screens
+	 * Adds meta boxes to admin screens.
 	 *
 	 * @since 0.1
 	 */
 	public function add_meta_boxes() {
 
-		// add our meta box
+		// Add our meta box.
 		add_meta_box(
 			'sof_quote_options',
 			__( 'Featured', 'sof-quotes' ),
@@ -82,60 +77,61 @@ class Spirit_Of_Football_Quotes_Metaboxes {
 
 
 	/**
-	 * Adds meta box to page edit screens
+	 * Adds meta box to page edit screens.
 	 *
 	 * @since 0.1
-	 * @param WP_Post $post The object for the current post/page
+	 *
+	 * @param WP_Post $post The object for the current post/page.
 	 */
 	public function quote_box( $post ) {
 
-		// use nonce for verification
+		// Use nonce for verification.
 		wp_nonce_field( 'sof_quote_settings', 'sof_quote_nonce' );
 
 		// ---------------------------------------------------------------------
-		// Set "Featured" Status
+		// Set "Featured" Status.
 		// ---------------------------------------------------------------------
 
 		$db_key = '_' . $this->featured_meta_key;
 
-		// default to empty
+		// Default to empty.
 		$val = '';
 
-		// get value if if the custom field already has one
+		// Get value if if the custom field already has one.
 		$existing = get_post_meta( $post->ID, $db_key, true );
 		if ( ! empty( $existing ) ) {
 			$val = get_post_meta( $post->ID, $db_key, true );
 		}
 
-		// open
+		// Open.
 		echo '<p>';
 
-		// checkbox
+		// Checkbox.
 		echo '<input id="' . $this->featured_meta_key . '" name="' . $this->featured_meta_key . '" value="1" type="checkbox" ' . (($val == '1') ? ' checked="checked"' : '') . '/>';
 
-		// construct label
+		// Construct label.
 		echo '<strong><label for="' . $this->featured_meta_key . '">' . __( 'Make quote featured', 'sof-quotes' ) . '</label></strong>';
 
-		// close
+		// Close.
 		echo '</p>';
 
 		echo '<hr>';
 
 		// ---------------------------------------------------------------------
-		// Show Shortcode
+		// Show Shortcode.
 		// ---------------------------------------------------------------------
 
-		// open
+		// Open.
 		echo '<p>';
 
-		// construct label
+		// Construct label.
 		echo '<strong><label for="' . $this->featured_meta_key . '">' . __( 'Shortcode', 'sof-quotes' ) . '</label></strong><br />';
 
-		// construct shortcode
+		// Construct shortcode.
 		$shortcode = esc_attr( '[quote id="' . $post->ID . '"]' );
 		echo '<input type="text" value="' . $shortcode . '" />';
 
-		// close
+		// Close.
 		echo '</p>';
 
 	}
@@ -143,17 +139,17 @@ class Spirit_Of_Football_Quotes_Metaboxes {
 
 
 	/**
-	 * Stores our additional params
+	 * Stores our additional params.
 	 *
 	 * @since 0.1
-	 * @param integer $post_id the ID of the post (or revision)
-	 * @param integer $post the post object
+	 * @param integer $post_id The ID of the post (or revision)
+	 * @param integer $post The post object.
 	 */
 	public function save_post( $post_id, $post ) {
 
-		// we don't use post_id because we're not interested in revisions
+		// We don't use post_id because we're not interested in revisions.
 
-		// store our page meta data
+		// Store our page meta data.
 		$result = $this->_save_page_meta( $post );
 
 	}
@@ -165,30 +161,30 @@ class Spirit_Of_Football_Quotes_Metaboxes {
 
 
 	/**
-	 * When a page is saved, this also saves the options
+	 * When a page is saved, this also saves the options.
 	 *
 	 * @since 0.1
 	 * @param WP_Post $post_obj The object for the post (or revision)
 	 */
 	private function _save_page_meta( $post_obj ) {
 
-		// if no post, kick out
+		// If no post, kick out.
 		if ( ! $post_obj ) return;
 
-		// authenticate
+		// Authenticate.
 		$nonce = isset( $_POST['sof_quote_nonce'] ) ? $_POST['sof_quote_nonce'] : '';
 		if ( ! wp_verify_nonce( $nonce, 'sof_quote_settings' ) ) return;
 
-		// is this an auto save routine?
+		// Is this an auto save routine?
 		if ( defined('DOING_AUTOSAVE') AND DOING_AUTOSAVE ) return;
 
-		// Check permissions
+		// Check permissions.
 		if ( ! current_user_can( 'edit_page', $post_obj->ID ) ) return;
 
-		// check for revision
+		// Check for revision.
 		if ( $post_obj->post_type == 'revision' ) {
 
-			// get parent
+			// Get parent.
 			if ( $post_obj->post_parent != 0 ) {
 				$post = get_post( $post_obj->post_parent );
 			} else {
@@ -199,20 +195,20 @@ class Spirit_Of_Football_Quotes_Metaboxes {
 			$post = $post_obj;
 		}
 
-		// bail if not quote post type
+		// Bail if not quote post type.
 		if ( $post->post_type == 'quote' ) return;
 
 		// ---------------------------------------------------------------------
-		// okay, we're through...
+		// Okay, we're through.
 		// ---------------------------------------------------------------------
 
-		// define key
+		// Define key.
 		$db_key = '_' . $this->featured_meta_key;
 
-		// if checkbox checked
+		// If checkbox checked.
 		$data = ( isset( $_POST[$this->featured_meta_key] ) ) ? '1' : '0';
 
-		// save metadata
+		// Save metadata.
 		$this->_save_meta( $post, $db_key, $data );
 
 	}
@@ -220,26 +216,26 @@ class Spirit_Of_Football_Quotes_Metaboxes {
 
 
 	/**
-	 * Utility to automate meta data saving
+	 * Utility to automate meta data saving.
 	 *
 	 * @since 0.1
-	 * @param WP_Post $post_obj The WordPress post object
-	 * @param string $key The meta key
-	 * @param mixed $data The data to be saved
-	 * @return mixed $data The data that was saved
+	 * @param WP_Post $post_obj The WordPress post object.
+	 * @param string $key The meta key.
+	 * @param mixed $data The data to be saved.
+	 * @return mixed $data The data that was saved.
 	 */
 	private function _save_meta( $post, $key, $data = '' ) {
 
-		// if the custom field already has a value
+		// If the custom field already has a value.
 		$existing = get_post_meta( $post->ID, $key, true );
 		if ( ! empty( $existing ) ) {
 
-			// update the data
+			// Update the data.
 			update_post_meta( $post->ID, $key, $data );
 
 		} else {
 
-			// add the data
+			// Add the data.
 			add_post_meta( $post->ID, $key, $data );
 
 		}
