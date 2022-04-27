@@ -2,12 +2,15 @@
 /**
  * The default template for displaying a Quote.
  *
- * @package SOF_Quotes
  * @since 0.3
+ *
+ * @package Spirit_Of_Football_Quotes
  */
-?>
 
-<!-- content-quote.php -->
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
+
+?><!-- content-quote.php -->
 
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 	<div class="entry-content">

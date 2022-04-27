@@ -1,16 +1,16 @@
-<?php /*
-================================================================================
-Spirit of Football Random Featured Quote Widget
-================================================================================
-AUTHOR: Christian Wach <needle@haystack.co.uk>
---------------------------------------------------------------------------------
-NOTES
-=====
+<?php
+/**
+ * Random Featured Quote Widget Class.
+ *
+ * Handles the display of a Random Featured Quote Widget.
+ *
+ * @since 0.1
+ *
+ * @package Spirit_Of_Football_Quotes
+ */
 
---------------------------------------------------------------------------------
-*/
-
-
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Makes a custom Widget for displaying a Random Featured Quote.
@@ -19,8 +19,6 @@ NOTES
  */
 class SOF_Quote_Widget extends WP_Widget {
 
-
-
 	/**
 	 * Constructor registers widget with WordPress.
 	 *
@@ -28,25 +26,19 @@ class SOF_Quote_Widget extends WP_Widget {
 	 */
 	public function __construct() {
 
-		// init parent
+		// Init parent.
 		parent::__construct(
-
 			// Base ID.
 			'sof_random_quote',
-
 			// Widget Title.
 			__( 'Quote (Random Featured)', 'sof-quotes' ),
-
 			// Args.
-			array(
+			[
 				'description' => __( 'Use this widget to show a random featured quote.', 'sof-quotes' ),
-			)
-
+			]
 		);
 
 	}
-
-
 
 	/**
 	 * Outputs the HTML for this widget.
@@ -59,7 +51,7 @@ class SOF_Quote_Widget extends WP_Widget {
 	public function widget( $args, $instance ) {
 
 		// Define args for query.
-		$quotes_args = array(
+		$quotes_args = [
 			'post_type' => 'quote',
 			'no_found_rows' => true,
 			'post_status' => 'publish',
@@ -67,7 +59,7 @@ class SOF_Quote_Widget extends WP_Widget {
 			'meta_key' => '_featured_quote',
 			'meta_value' => 1,
 			'posts_per_page' => 1,
-		);
+		];
 
 		// Do query.
 		$quotes = new WP_Query( $quotes_args );
@@ -96,7 +88,8 @@ class SOF_Quote_Widget extends WP_Widget {
 			.widget_sof_random_quote cite:before { content: '- '; }
 			</style>
 			<ol>
-				<?php while ( $quotes->have_posts() ) : $quotes->the_post(); ?>
+				<?php while ( $quotes->have_posts() ) : ?>
+					<?php $quotes->the_post(); ?>
 					<li class="widget-entry-title">
 						<article <?php post_class(); ?> id="post-<?php the_ID(); ?>" style="position: relative;">
 							<div class="entry-content">
@@ -127,12 +120,9 @@ class SOF_Quote_Widget extends WP_Widget {
 			// Reset the post globals as this query will have stomped on it.
 			wp_reset_postdata();
 
-		// end check for boxes
 		endif;
 
 	}
-
-
 
 	/**
 	 * Back-end widget form.
@@ -145,9 +135,7 @@ class SOF_Quote_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
-		//print_r( $instance ); die();
-
-		// get title
+		// Get title.
 		if ( isset( $instance['title'] ) ) {
 			$title = $instance['title'];
 		} else {
@@ -157,15 +145,15 @@ class SOF_Quote_Widget extends WP_Widget {
 		?>
 
 		<p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'sof-quotes' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>">
+				<?php esc_html_e( 'Title:', 'sof-quotes' ); ?>
+			</label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
 
 		<?php
 
 	}
-
-
 
 	/**
 	 * Sanitize widget form values as they are saved.
@@ -180,7 +168,7 @@ class SOF_Quote_Widget extends WP_Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 
-		// never lose a value
+		// Never lose a value.
 		$instance = wp_parse_args( $new_instance, $old_instance );
 
 		// --<
@@ -188,14 +176,7 @@ class SOF_Quote_Widget extends WP_Widget {
 
 	}
 
+}
 
-
-} // ends class SOF_Quote_Widget
-
-
-
-// register this widget
+// Register this widget.
 register_widget( 'SOF_Quote_Widget' );
-
-
-

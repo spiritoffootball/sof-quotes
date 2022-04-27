@@ -1,16 +1,25 @@
 <?php
+/**
+ * Custom Shortcodes Class.
+ *
+ * Handles all Shortcodes for Quotes.
+ *
+ * @since 0.1
+ *
+ * @package Spirit_Of_Football_Quotes
+ */
+
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
 
 /**
- * SOF Quotes Custom Shortcodes Class.
+ * Custom Shortcodes Class.
  *
  * A class that encapsulates all Shortcodes for Quotes.
  *
- * @package WordPress
- * @subpackage SOF
+ * @since 0.1
  */
 class Spirit_Of_Football_Quotes_Shortcodes {
-
-
 
 	/**
 	 * Constructor.
@@ -23,8 +32,6 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 
 	}
 
-
-
 	/**
 	 * Register WordPress hooks.
 	 *
@@ -33,17 +40,11 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 	public function register_hooks() {
 
 		// Register shortcodes.
-		add_shortcode( 'quote', array( $this, 'quote_shortcode' ) );
+		add_shortcode( 'quote', [ $this, 'quote_shortcode' ] );
 
 	}
 
-
-
-
-	// #########################################################################
-
-
-
+	// -------------------------------------------------------------------------
 
 	/**
 	 * Add a quote to a page/post via a shortcode.
@@ -60,34 +61,40 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 		$quote = '';
 
 		// Get params.
-		extract( shortcode_atts( array(
-			'id'	=> '',
-			'align'	=> 'none'
-		), $attr ) );
+		extract( shortcode_atts( [
+			'id' => '',
+			'align' => 'none',
+		], $attr ) );
 
 		// Kick out if there's anything amiss.
-		if ( $id == '' OR is_feed() ) {
+		if ( $id == '' || is_feed() ) {
 			return $quote;
 		}
 
 		// Define args for query.
-		$query_args = array(
+		$query_args = [
 			'post_type' => 'quote',
 			'p' => $id,
 			'no_found_rows' => true,
 			'post_status' => 'publish',
 			'posts_per_page' => 1,
-		);
+		];
 
 		// Do query.
 		$quotes = new WP_Query( $query_args );
 
 		// Give class to article.
 		$class = 'alignnone';
-		switch( $align ) {
-			case 'none': $class = 'alignnone'; break;
-			case 'right': $class = 'alignright'; break;
-			case 'left': $class = 'alignleft'; break;
+		switch ( $align ) {
+			case 'none':
+				$class = 'alignnone';
+				break;
+			case 'right':
+				$class = 'alignright';
+				break;
+			case 'left':
+				$class = 'alignleft';
+				break;
 		}
 
 		// Make sure any theme (other than TwentyEleven) gets no alignment.
@@ -101,7 +108,10 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 			// Prevent immediate output.
 			ob_start();
 
-			while ( $quotes->have_posts() ) : $quotes->the_post(); ?>
+			while ( $quotes->have_posts() ) :
+				$quotes->the_post();
+
+				?>
 
 				<style>
 				.quote cite:before { content: '- '; }
@@ -113,7 +123,9 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 					</div><!-- .entry-content -->
 				</article><!-- #post-<?php the_ID(); ?> -->
 
-			<?php endwhile;
+				<?php
+
+			endwhile;
 
 			// Get the quote.
 			$quote = ob_get_contents();
@@ -137,10 +149,4 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 
 	}
 
-
-
-
-} // class Spirit_Of_Football_Quotes_Shortcodes ends
-
-
-
+}

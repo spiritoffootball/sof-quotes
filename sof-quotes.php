@@ -1,16 +1,19 @@
-<?php /*
---------------------------------------------------------------------------------
-Plugin Name: SOF Quotes
-Plugin URI: http://spiritoffootball.com
-Description: Provides Quotes and associated functionality.
-Author: Christian Wach
-Version: 0.1.1
-Author URI: http://haystack.co.uk
-Text Domain: sof-quotes
---------------------------------------------------------------------------------
-*/
+<?php
+/**
+ * Plugin Name: SOF Quotes
+ * Plugin URI: http://spiritoffootball.com
+ * Description: Provides Quotes and associated functionality.
+ * Author: Christian Wach
+ * Version: 0.1.1
+ * Author URI: https://haystack.co.uk
+ * Text Domain: sof-quotes
+ * Domain Path: /languages
+ *
+ * @package Spirit_Of_Football_Quotes
+ */
 
-
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
 
 // Set our version here.
 define( 'SOF_QUOTES_VERSION', '0.1.1' );
@@ -30,15 +33,12 @@ if ( ! defined( 'SOF_QUOTES_PATH' ) ) {
 	define( 'SOF_QUOTES_PATH', plugin_dir_path( SOF_QUOTES_FILE ) );
 }
 
-
-
 /**
  * SOF Quotes Class.
  *
  * A class that encapsulates network-wide quotations.
  *
- * @package WordPress
- * @subpackage SOF
+ * @since 0.1
  */
 class Spirit_Of_Football_Quotes {
 
@@ -69,8 +69,6 @@ class Spirit_Of_Football_Quotes {
 	 */
 	public $shortcodes;
 
-
-
 	/**
 	 * Constructor.
 	 *
@@ -88,8 +86,6 @@ class Spirit_Of_Football_Quotes {
 		$this->register_hooks();
 
 	}
-
-
 
 	/**
 	 * Include files.
@@ -109,8 +105,6 @@ class Spirit_Of_Football_Quotes {
 
 	}
 
-
-
 	/**
 	 * Set up objects.
 	 *
@@ -129,8 +123,6 @@ class Spirit_Of_Football_Quotes {
 
 	}
 
-
-
 	/**
 	 * Register WordPress hooks.
 	 *
@@ -139,7 +131,7 @@ class Spirit_Of_Football_Quotes {
 	public function register_hooks() {
 
 		// Use translation.
-		add_action( 'plugins_loaded', array( $this, 'translation' ) );
+		add_action( 'plugins_loaded', [ $this, 'translation' ] );
 
 		// Hooks that always need to be present.
 		$this->cpt->register_hooks();
@@ -147,11 +139,9 @@ class Spirit_Of_Football_Quotes {
 		$this->shortcodes->register_hooks();
 
 		// Add widgets.
-		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
+		add_action( 'widgets_init', [ $this, 'register_widgets' ] );
 
 	}
-
-
 
 	/**
 	 * Actions to perform on plugin activation.
@@ -165,8 +155,6 @@ class Spirit_Of_Football_Quotes {
 
 	}
 
-
-
 	/**
 	 * Actions to perform on plugin deactivation (NOT deletion)
 	 *
@@ -179,16 +167,15 @@ class Spirit_Of_Football_Quotes {
 
 	}
 
-
-
 	/**
 	 * Loads translation, if present.
 	 *
 	 * @since 0.1
 	 */
-	function translation() {
+	public function translation() {
 
 		// Load translations.
+		// phpcs:ignore WordPress.WP.DeprecatedParameters.Load_plugin_textdomainParam2Found
 		load_plugin_textdomain(
 			'sof-quotes', // Unique name.
 			false, // Deprecated argument.
@@ -196,8 +183,6 @@ class Spirit_Of_Football_Quotes {
 		);
 
 	}
-
-
 
 	/**
 	 * Register widgets for this plugin.
@@ -207,25 +192,39 @@ class Spirit_Of_Football_Quotes {
 	public function register_widgets() {
 
 		// Include widgets.
-		require_once( SOF_QUOTES_PATH . 'widgets/sof-quotes-widget-random.php' );
+		require_once SOF_QUOTES_PATH . 'widgets/sof-quotes-widget-random.php';
 
 	}
 
+}
 
+/**
+ * Utility to get a reference to this plugin.
+ *
+ * @since 0.1.1
+ *
+ * @return Spirit_Of_Football_Quotes $plugin The plugin reference.
+ */
+function spirit_of_football_quotes() {
 
-} // class Spirit_Of_Football_Quotes ends.
+	// Store instance in static variable.
+	static $plugin = false;
 
+	// Maybe return instance.
+	if ( false === $plugin ) {
+		$plugin = new Spirit_Of_Football_Quotes();
+	}
 
+	// --<
+	return $plugin;
 
-// Instantiate the class.
-global $sof_quotes_plugin;
-$sof_quotes_plugin = new Spirit_Of_Football_Quotes();
+}
+
+// Initialise plugin now.
+spirit_of_football_quotes();
 
 // Activation.
-register_activation_hook( __FILE__, array( $sof_quotes_plugin, 'activate' ) );
+register_activation_hook( __FILE__, [ spirit_of_football_quotes(), 'activate' ] );
 
 // Deactivation.
-register_deactivation_hook( __FILE__, array( $sof_quotes_plugin, 'deactivate' ) );
-
-
-
+register_deactivation_hook( __FILE__, [ spirit_of_football_quotes(), 'deactivate' ] );
