@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: SOF Quotes
- * Plugin URI: http://spiritoffootball.com
+ * Plugin URI: https://github.com/spiritoffootball/sof-quotes
  * Description: Provides Quotes and associated functionality.
  * Author: Christian Wach
  * Version: 0.1.1
