@@ -174,7 +174,7 @@ class Spirit_Of_Football_Quotes_CPT {
 
 				// Revision text.
 				sprintf(
-					/* translators: %s: date and time of the revision. */
+					/* translators: %s: Title of the revision. */
 					__( 'Quote restored to revision from %s', 'sof-quotes' ),
 					wp_post_revision_title( (int) $_GET['revision'], false )
 				) :
