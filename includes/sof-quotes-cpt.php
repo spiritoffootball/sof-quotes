@@ -170,12 +170,14 @@ class Spirit_Of_Football_Quotes_CPT {
 			4 => __( 'Quote updated.', 'sof-quotes' ),
 
 			// Item restored to a revision.
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			5 => isset( $_GET['revision'] ) ?
 
 				// Revision text.
 				sprintf(
 					/* translators: %s: Title of the revision. */
 					__( 'Quote restored to revision from %s', 'sof-quotes' ),
+					// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 					wp_post_revision_title( (int) $_GET['revision'], false )
 				) :
 

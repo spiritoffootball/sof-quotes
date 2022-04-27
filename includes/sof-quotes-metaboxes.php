@@ -171,7 +171,8 @@ class Spirit_Of_Football_Quotes_Metaboxes {
 		}
 
 		// Authenticate.
-		$nonce = isset( $_POST['sof_quote_nonce'] ) ? $_POST['sof_quote_nonce'] : '';
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$nonce = isset( $_POST['sof_quote_nonce'] ) ? wp_unslash( $_POST['sof_quote_nonce'] ) : '';
 		if ( ! wp_verify_nonce( $nonce, 'sof_quote_settings' ) ) {
 			return;
 		}
