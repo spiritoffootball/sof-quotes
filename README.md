@@ -1,6 +1,6 @@
 # SOF Quotes
 
-Provides quotes and associated functionality for Spirit of Football,
+Provides quotes and associated functionality for Spirit of Football.
 
 ## Description
 
