@@ -6,150 +6,141 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-12-20 11:56+0000\n"
+"PO-Revision-Date: 2022-10-19 17:48+0000\n"
 "Last-Translator: Site Admin <needle@haystack.co.uk>\n"
 "Language-Team: German\n"
-"Language: de-DE\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
-"X-Generator: Loco - https://localise.biz/"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Loco https://localise.biz/"
 
-#: includes/sof-quotes-cpt.php:105 includes/sof-quotes-cpt.php:117
-msgid "Quotes"
-msgstr "Zitate"
+msgid "Add New Quote"
+msgstr "Zitat hinzufügen"
 
-#: includes/sof-quotes-cpt.php:106
+msgid "All Quotes"
+msgstr "Alle Zitate"
+
+#. Author of the plugin
+msgid "Christian Wach"
+msgstr "Christian Wach"
+
+msgid "Custom field deleted."
+msgstr "Benutzerdefiniertes Feld gelöscht."
+
+msgid "Custom field updated."
+msgstr "Benutzerdefiniertes Feld aktualisiert."
+
+msgid "Edit"
+msgstr "Bearbeiten"
+
+msgid "Edit Quote"
+msgstr "Zitat bearbeiten"
+
+msgid "Featured"
+msgstr "Vorgestellt"
+
+msgid "Featured Quote"
+msgstr "Vorgestelltes Zitat"
+
+#. Plugin URI of the plugin
+msgid "https://github.com/spiritoffootball/sof-quotes"
+msgstr "https://github.com/spiritoffootball/sof-quotes"
+
+#. Author URI of the plugin
+msgid "https://haystack.co.uk"
+msgstr "https://haystack.co.uk"
+
+#. translators: Publish box date format, see http://php.net/date
+msgid "M j, Y @ G:i"
+msgstr ""
+
+msgid "Make quote featured"
+msgstr "Zitat vorgestellt machen"
+
+msgid "New Quote"
+msgstr "Neuer Zitat"
+
+msgid "No matching Quote found"
+msgstr "Kein Zitat gefunden"
+
+msgid "No Quotes found in Trash"
+msgstr "Keine Zitate im Papierkorb gefunden"
+
+#. Description of the plugin
+msgid "Provides Quotes and associated functionality."
+msgstr "Bietet Zitate und zugehörige Funktionen."
+
 msgid "Quote"
 msgstr "Zitat"
 
-#: includes/sof-quotes-cpt.php:107
 msgctxt "quote"
 msgid "Add New"
 msgstr "Erstellen"
 
-#: includes/sof-quotes-cpt.php:108
-msgid "Add New Quote"
-msgstr "Zitat hinzufügen"
+msgid "Quote (Random Featured)"
+msgstr "Zitat (wahllos)"
 
-#: includes/sof-quotes-cpt.php:109
-msgid "Edit Quote"
-msgstr "Zitat bearbeiten"
-
-#: includes/sof-quotes-cpt.php:110
-msgid "New Quote"
-msgstr "Neuer Zitat"
-
-#: includes/sof-quotes-cpt.php:111
-msgid "All Quotes"
-msgstr "Alle Zitate"
-
-#: includes/sof-quotes-cpt.php:112
-msgid "View Quote"
-msgstr "Zitat ansehen"
-
-#: includes/sof-quotes-cpt.php:113
-msgid "Search Quotes"
-msgstr "Zitate suchen"
-
-#: includes/sof-quotes-cpt.php:114
-msgid "No matching Quote found"
-msgstr "Kein Zitat gefunden"
-
-#: includes/sof-quotes-cpt.php:115
-msgid "No Quotes found in Trash"
-msgstr "Keine Zitate im Papierkorb gefunden"
-
-#: includes/sof-quotes-cpt.php:166
-msgid "Quote updated. <a href=\"%s\">View quote</a>"
-msgstr "Zitat aktualisiert. <a href=\"%s\">Zitat ansehen</a>"
-
-#: includes/sof-quotes-cpt.php:171
-msgid "Custom field updated."
+#. translators: %s: Post preview URL.
+msgid "Quote draft updated. <a target=\"_blank\" href=\"%s\">Preview quote</a>"
 msgstr ""
 
-#: includes/sof-quotes-cpt.php:172
-msgid "Custom field deleted."
+msgid "Quote published privately."
 msgstr ""
 
-#: includes/sof-quotes-cpt.php:173
-msgid "Quote updated."
-msgstr "Zitat aktualisiert."
-
-#. translators: %s: date and time of the revision
-#: includes/sof-quotes-cpt.php:181
-msgid "Quote restored to revision from %s"
+msgid "Quote published."
 msgstr ""
 
-#: includes/sof-quotes-cpt.php:190
+#. translators: %s: Post permalink URL.
 msgid "Quote published. <a href=\"%s\">View quote</a>"
 msgstr ""
 
-#: includes/sof-quotes-cpt.php:195
+#. translators: %s: Title of the revision.
+msgid "Quote restored to revision from %s"
+msgstr ""
+
+msgid "Quote reverted to draft."
+msgstr ""
+
 msgid "Quote saved."
 msgstr "Zitat aktualisiert."
 
-#: includes/sof-quotes-cpt.php:199
-msgid "Quote submitted. <a target=\"_blank\" href=\"%s\">Preview quote</a>"
-msgstr ""
-
-#: includes/sof-quotes-cpt.php:205
+#. translators: 1: Publish box date format, see http://php.net/date, 2: Post date, 3: Post permalink.
 msgid ""
 "Quote scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" "
 "href=\"%2$s\">Preview quote</a>"
 msgstr ""
 
-#. translators: Publish box date format, see http:php.net/date
-#: includes/sof-quotes-cpt.php:207
-msgid "M j, Y @ G:i"
+msgid "Quote scheduled."
 msgstr ""
 
-#: includes/sof-quotes-cpt.php:214
-msgid "Quote draft updated. <a target=\"_blank\" href=\"%s\">Preview quote</a>"
+#. translators: %s: Post preview URL.
+msgid "Quote submitted. <a target=\"_blank\" href=\"%s\">Preview quote</a>"
 msgstr ""
 
-#: includes/sof-quotes-metaboxes.php:78
-msgid "Featured"
-msgstr "Vorgestellt"
+msgid "Quote updated."
+msgstr "Zitat aktualisiert."
 
-#: includes/sof-quotes-metaboxes.php:124
-msgid "Make quote featured"
-msgstr "Zitat vorgestellt machen"
+#. translators: %s: Post permalink URL.
+msgid "Quote updated. <a href=\"%s\">View quote</a>"
+msgstr "Zitat aktualisiert. <a href=\"%s\">Zitat ansehen</a>"
 
-#: includes/sof-quotes-metaboxes.php:139
+msgid "Quotes"
+msgstr "Zitate"
+
+msgid "Search Quotes"
+msgstr "Zitate suchen"
+
 msgid "Shortcode"
 msgstr ""
 
-#: widgets/sof-quotes-widget.php:39
-msgid "Quote (Random Featured)"
-msgstr "Zitat (wahllos)"
-
-#: widgets/sof-quotes-widget.php:43
-msgid "Use this widget to show a random featured quote."
-msgstr "Verwenden Sie dieses Widget, um ein wahlloses Zitat anzuzeigen."
-
-#: widgets/sof-quotes-widget.php:150
-msgid "Featured Quote"
-msgstr "Vorgestelltes Zitat"
-
-#: widgets/sof-quotes-widget.php:156
-msgid "Title:"
-msgstr "Titel:"
-
-#. Plugin Name of the plugin/theme
+#. Plugin Name of the plugin
 msgid "SOF Quotes"
 msgstr "SOF Zitate"
 
-#. Plugin URI of the plugin/theme
-msgid "http://spiritoffootball.com"
-msgstr ""
+msgid "Title:"
+msgstr "Titel:"
 
-#. Description of the plugin/theme
-msgid "Provides Quotes and associated functionality."
-msgstr ""
+msgid "Use this widget to show a random featured quote."
+msgstr "Verwenden Sie dieses Widget, um ein wahlloses Zitat anzuzeigen."
 
-#. Author of the plugin/theme
-msgid "Christian Wach"
-msgstr ""
-
-#. Author URI of the plugin/theme
-msgid "http://haystack.co.uk"
-msgstr ""
+msgid "View Quote"
+msgstr "Zitat ansehen"
