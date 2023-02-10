@@ -70,7 +70,7 @@ class Spirit_Of_Football_Quotes_Metaboxes {
 		add_meta_box(
 			'sof_quote_options',
 			__( 'Featured', 'sof-quotes' ),
-			[ $this, 'quote_box' ],
+			[ $this, 'metabox_render' ],
 			'quote',
 			'side'
 		);
@@ -84,7 +84,7 @@ class Spirit_Of_Football_Quotes_Metaboxes {
 	 *
 	 * @param WP_Post $post The object for the current post/page.
 	 */
-	public function quote_box( $post ) {
+	public function metabox_render( $post ) {
 
 		// Use nonce for verification.
 		wp_nonce_field( 'sof_quote_settings', 'sof_quote_nonce' );
@@ -104,36 +104,11 @@ class Spirit_Of_Football_Quotes_Metaboxes {
 			$val = get_post_meta( $post->ID, $db_key, true );
 		}
 
-		// Open.
-		echo '<p>';
-
-		// Checkbox.
-		echo '<input id="' . $this->featured_meta_key . '" name="' . $this->featured_meta_key . '" value="1" type="checkbox" ' . ( ( $val == '1' ) ? ' checked="checked"' : '' ) . '/>';
-
-		// Construct label.
-		echo '<strong><label for="' . $this->featured_meta_key . '">' . __( 'Make quote featured', 'sof-quotes' ) . '</label></strong>';
-
-		// Close.
-		echo '</p>';
-
-		echo '<hr>';
-
-		// ---------------------------------------------------------------------
-		// Show Shortcode.
-		// ---------------------------------------------------------------------
-
-		// Open.
-		echo '<p>';
-
-		// Construct label.
-		echo '<strong><label for="' . $this->featured_meta_key . '">' . __( 'Shortcode', 'sof-quotes' ) . '</label></strong><br />';
-
 		// Construct shortcode.
 		$shortcode = esc_attr( '[quote id="' . $post->ID . '"]' );
-		echo '<input type="text" value="' . $shortcode . '" />';
 
-		// Close.
-		echo '</p>';
+		// Include template file.
+		include SOF_QUOTES_PATH . 'assets/templates/metabox-quote.php';
 
 	}
 

@@ -51,30 +51,34 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 	 *
 	 * @since 0.1
 	 *
-	 * @param array $attr The saved shortcode attributes.
-	 * @param str $content The enclosed content of the shortcode.
-	 * @return str $quote The rendered shortcode.
+	 * @param array $attr The saved Shortcode attributes.
+	 * @param string $content The enclosed content of the Shortcode.
+	 * @param string $tag The Shortcode which invoked the callback.
+	 * @return string $quote The HTML-formatted Shortcode content.
 	 */
-	public function quote_shortcode( $attr, $content = null ) {
+	public function shortcode_render( $attr, $content = '', $tag = '' ) {
 
 		// Init return.
 		$quote = '';
 
-		// Get params.
-		extract( shortcode_atts( [
+		// Default Shortcode attributes.
+		$defaults = [
 			'id' => '',
 			'align' => 'none',
-		], $attr ) );
+		];
 
-		// Kick out if there's anything amiss.
-		if ( $id == '' || is_feed() ) {
+		// Get parsed attributes.
+		$atts = shortcode_atts( $defaults, $attr, $tag );
+
+		// Bail if there's anything amiss.
+		if ( empty( $atts['id'] ) || is_feed() ) {
 			return $quote;
 		}
 
 		// Define args for query.
 		$query_args = [
 			'post_type' => 'quote',
-			'p' => $id,
+			'p' => $atts['id'],
 			'no_found_rows' => true,
 			'post_status' => 'publish',
 			'posts_per_page' => 1,
@@ -85,7 +89,7 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 
 		// Give class to article.
 		$class = 'alignnone';
-		switch ( $align ) {
+		switch ( $atts['align'] ) {
 			case 'none':
 				$class = 'alignnone';
 				break;
@@ -110,21 +114,7 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 
 			while ( $quotes->have_posts() ) :
 				$quotes->the_post();
-
-				?>
-
-				<style>
-				.quote cite:before { content: '- '; }
-				</style>
-				<article <?php post_class( $class ); ?> id="post-<?php the_ID(); ?>" style="position: relative;">
-					<div class="entry-content">
-						<?php edit_post_link( __( 'Edit Quote', 'sof-quotes' ), '<span class="edit-link" style="position: absolute; top: 4px; right: 4px; text-transform: uppercase;">', '</span>' ); ?>
-						<?php the_content(); ?>
-					</div><!-- .entry-content -->
-				</article><!-- #post-<?php the_ID(); ?> -->
-
-				<?php
-
+				include SOF_QUOTES_PATH . 'assets/templates/content-quote-shortcode.php';
 			endwhile;
 
 			// Get the quote.
@@ -138,8 +128,10 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 		// Reset the post globals as this query will have stomped on it.
 		wp_reset_postdata();
 
+		/*
 		// Give article tag an alignment.
-		//$quote = str_replace( '<article class="', '<article class="' . $class . ' ', $quote );
+		$quote = str_replace( '<article class="', '<article class="' . $class . ' ', $quote );
+		*/
 
 		// Give article edit button a class.
 		$quote = str_replace( '<a class="post-edit-link', '<a class="post-edit-link button', $quote );
