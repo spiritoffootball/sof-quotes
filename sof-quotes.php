@@ -95,13 +95,13 @@ class Spirit_Of_Football_Quotes {
 	public function include_files() {
 
 		// Include CPT class.
-		include_once SOF_QUOTES_PATH . 'includes/sof-quotes-cpt.php';
+		include_once SOF_QUOTES_PATH . 'includes/class-cpt-quotes.php';
 
 		// Include Metaboxes class.
-		include_once SOF_QUOTES_PATH . 'includes/sof-quotes-metaboxes.php';
+		include_once SOF_QUOTES_PATH . 'includes/class-metabox-quotes.php';
 
 		// Include Shortcodes class.
-		include_once SOF_QUOTES_PATH . 'includes/sof-quotes-shortcodes.php';
+		include_once SOF_QUOTES_PATH . 'includes/class-shortcode-quotes.php';
 
 	}
 

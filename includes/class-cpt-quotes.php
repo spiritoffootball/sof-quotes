@@ -22,9 +22,18 @@ defined( 'ABSPATH' ) || exit;
 class Spirit_Of_Football_Quotes_CPT {
 
 	/**
+	 * Plugin object.
+	 *
+	 * @since 0.1
+	 * @access public
+	 * @var object $plugin The plugin object.
+	 */
+	public $plugin;
+
+	/**
 	 * Custom Post Type name.
 	 *
-	 * @since 1.0
+	 * @since 0.1
 	 * @access public
 	 * @var string $post_type_name The name of the Custom Post Type.
 	 */
@@ -33,7 +42,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	/**
 	 * Custom Post Type REST base.
 	 *
-	 * @since 1.0
+	 * @since 0.1
 	 * @access public
 	 * @var string $post_type_rest_base The REST base of the Custom Post Type.
 	 */
@@ -42,7 +51,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	/**
 	 * Taxonomy name.
 	 *
-	 * @since 1.0
+	 * @since 0.1
 	 * @access public
 	 * @var str $taxonomy_name The name of the Custom Taxonomy.
 	 */
@@ -51,7 +60,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	/**
 	 * Taxonomy REST base.
 	 *
-	 * @since 1.0
+	 * @since 0.1
 	 * @access public
 	 * @var str $taxonomy_rest_base The REST base of the Custom Taxonomy.
 	 */
@@ -60,7 +69,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	/**
 	 * Free Taxonomy name.
 	 *
-	 * @since 1.0
+	 * @since 0.1
 	 * @access public
 	 * @var str $taxonomy_name The name of the Custom Taxonomy.
 	 */
@@ -69,7 +78,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	/**
 	 * Free Taxonomy REST base.
 	 *
-	 * @since 1.0
+	 * @since 0.1
 	 * @access public
 	 * @var str $taxonomy_rest_base The REST base of the Custom Taxonomy.
 	 */
@@ -307,7 +316,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	/**
 	 * Creates our Custom Taxonomy.
 	 *
-	 * @since 1.0
+	 * @since 0.1
 	 */
 	public function taxonomy_primary_create() {
 
@@ -368,7 +377,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	 *
 	 * @see https://core.trac.wordpress.org/ticket/10982
 	 *
-	 * @since 1.0
+	 * @since 0.1
 	 *
 	 * @param array $args The existing arguments.
 	 * @param int $post_id The WordPress post ID.
@@ -391,7 +400,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	/**
 	 * Adds a filter for this Custom Taxonomy to the Custom Post Type listing.
 	 *
-	 * @since 1.0
+	 * @since 0.1
 	 */
 	public function taxonomy_primary_post_type_filter() {
 

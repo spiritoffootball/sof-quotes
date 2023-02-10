@@ -22,6 +22,15 @@ defined( 'ABSPATH' ) || exit;
 class Spirit_Of_Football_Quotes_Metaboxes {
 
 	/**
+	 * Plugin object.
+	 *
+	 * @since 0.1.1
+	 * @access public
+	 * @var object $plugin The plugin object.
+	 */
+	public $plugin;
+
+	/**
 	 * Featured Quote meta key.
 	 *
 	 * @since 0.1
