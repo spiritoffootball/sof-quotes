@@ -88,10 +88,35 @@ class Spirit_Of_Football_Quotes_CPT {
 	 * Constructor.
 	 *
 	 * @since 0.1
+	 *
+	 * @param object $parent The parent object.
 	 */
-	public function __construct() {
+	public function __construct( $parent ) {
 
-		// Nothing.
+		// Store reference to plugin.
+		$this->plugin = $parent;
+
+		// Init when this plugin is loaded.
+		add_action( 'sof_quotes/loaded', [ $this, 'initialise' ] );
+
+	}
+
+	/**
+	 * Initialises this object.
+	 *
+	 * @since 0.1.1
+	 */
+	public function initialise() {
+
+		// Bootstrap class.
+		$this->register_hooks();
+
+		/**
+		 * Broadcast that this class is active.
+		 *
+		 * @since 0.1.1
+		 */
+		do_action( 'sof_orgs/cpt/loaded' );
 
 	}
 
@@ -187,7 +212,7 @@ class Spirit_Of_Football_Quotes_CPT {
 			'labels' => $labels,
 
 			// Defaults.
-			'description' => __( 'A quote post type', 'sof-organisations' ),
+			'description' => __( 'A quote post type', 'sof-quotes' ),
 			'public' => true,
 			'publicly_queryable' => true,
 			'exclude_from_search' => false,
@@ -334,18 +359,18 @@ class Spirit_Of_Football_Quotes_CPT {
 
 			// Labels.
 			'labels' => [
-				'name'              => _x( 'Quote Types', 'taxonomy general name', 'sof-organisations' ),
-				'singular_name'     => _x( 'Quote Type', 'taxonomy singular name', 'sof-organisations' ),
-				'search_items'      => __( 'Search Quote Types', 'sof-organisations' ),
-				'all_items'         => __( 'All Quote Types', 'sof-organisations' ),
-				'parent_item'       => __( 'Parent Quote Type', 'sof-organisations' ),
-				'parent_item_colon' => __( 'Parent Quote Type:', 'sof-organisations' ),
-				'edit_item'         => __( 'Edit Quote Type', 'sof-organisations' ),
-				'update_item'       => __( 'Update Quote Type', 'sof-organisations' ),
-				'add_new_item'      => __( 'Add New Quote Type', 'sof-organisations' ),
-				'new_item_name'     => __( 'New Quote Type Name', 'sof-organisations' ),
-				'menu_name'         => __( 'Quote Types', 'sof-organisations' ),
-				'not_found'         => __( 'No Quote Types found', 'sof-organisations' ),
+				'name'              => _x( 'Quote Types', 'taxonomy general name', 'sof-quotes' ),
+				'singular_name'     => _x( 'Quote Type', 'taxonomy singular name', 'sof-quotes' ),
+				'menu_name'         => __( 'Quote Types', 'sof-quotes' ),
+				'search_items'      => __( 'Search Quote Types', 'sof-quotes' ),
+				'all_items'         => __( 'All Quote Types', 'sof-quotes' ),
+				'edit_item'         => __( 'Edit Quote Type', 'sof-quotes' ),
+				'update_item'       => __( 'Update Quote Type', 'sof-quotes' ),
+				'add_new_item'      => __( 'Add New Quote Type', 'sof-quotes' ),
+				'new_item_name'     => __( 'New Quote Type Name', 'sof-quotes' ),
+				'not_found'         => __( 'No Quote Types found', 'sof-quotes' ),
+				'parent_item'       => __( 'Parent Quote Type', 'sof-quotes' ),
+				'parent_item_colon' => __( 'Parent Quote Type:', 'sof-quotes' ),
 			],
 
 			// Rewrite rules.
@@ -418,7 +443,7 @@ class Spirit_Of_Football_Quotes_CPT {
 		// Show a dropdown.
 		wp_dropdown_categories( [
 			/* translators: %s: The plural name of the taxonomy terms. */
-			'show_option_all' => sprintf( __( 'Show All %s', 'sof-organisations' ), $taxonomy->label ),
+			'show_option_all' => sprintf( __( 'Show All %s', 'sof-quotes' ), $taxonomy->label ),
 			'taxonomy' => $this->taxonomy_name,
 			'name' => $this->taxonomy_name,
 			'orderby' => 'name',
@@ -456,19 +481,20 @@ class Spirit_Of_Football_Quotes_CPT {
 
 			// Labels.
 			'labels' => [
-				'name' =>                       __( 'Quote Tags', 'sof-quotes' ),
-				'singular_name' =>              __( 'Quote Tag', 'sof-quotes' ),
-				'menu_name' =>                  __( 'Quote Tags', 'sof-quotes' ),
-				'search_items' =>               __( 'Search Quote Tags', 'sof-quotes' ),
-				'popular_items' =>              __( 'Popular Quote Tags', 'sof-quotes' ),
-				'all_items' =>                  __( 'All Quote Tags', 'sof-quotes' ),
-				'edit_item' =>                  __( 'Edit Quote Tag', 'sof-quotes' ),
-				'update_item' =>                __( 'Update Quote Tag', 'sof-quotes' ),
-				'add_new_item' =>               __( 'Add New Quote Tag', 'sof-quotes' ),
-				'new_item_name' =>              __( 'New Quote Tag Name', 'sof-quotes' ),
+				'name'                       => _x( 'Quote Tags', 'taxonomy general name', 'sof-quotes' ),
+				'singular_name'              => _x( 'Quote Tag', 'taxonomy singular name', 'sof-quotes' ),
+				'menu_name'                  => __( 'Quote Tags', 'sof-quotes' ),
+				'search_items'               => __( 'Search Quote Tags', 'sof-quotes' ),
+				'all_items'                  => __( 'All Quote Tags', 'sof-quotes' ),
+				'edit_item'                  => __( 'Edit Quote Tag', 'sof-quotes' ),
+				'update_item'                => __( 'Update Quote Tag', 'sof-quotes' ),
+				'add_new_item'               => __( 'Add New Quote Tag', 'sof-quotes' ),
+				'new_item_name'              => __( 'New Quote Tag Name', 'sof-quotes' ),
+				'not_found'                  => __( 'No Quote Tags found', 'sof-quotes' ),
+				'popular_items'              => __( 'Popular Quote Tags', 'sof-quotes' ),
 				'separate_items_with_commas' => __( 'Separate Quote Tags with commas', 'sof-quotes' ),
-				'add_or_remove_items' =>        __( 'Add or remove Quote Tag', 'sof-quotes' ),
-				'choose_from_most_used' =>      __( 'Choose from the most popular Quote Tags', 'sof-quotes' ),
+				'add_or_remove_items'        => __( 'Add or remove Quote Tag', 'sof-quotes' ),
+				'choose_from_most_used'      => __( 'Choose from the most popular Quote Tags', 'sof-quotes' ),
 			],
 
 			// Permalinks.

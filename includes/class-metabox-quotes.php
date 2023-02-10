@@ -1,8 +1,8 @@
 <?php
 /**
- * Metaboxes Class.
+ * Metabox Class.
  *
- * Handles Metaboxes for Quotes.
+ * Handles Metabox for Quotes.
  *
  * @since 0.1
  *
@@ -13,13 +13,13 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * SOF Quotes Metaboxes Class.
+ * SOF Quotes Metabox Class.
  *
- * A class that encapsulates all Metaboxes for Quotes.
+ * A class that encapsulates all Metabox for Quotes.
  *
  * @since 0.1
  */
-class Spirit_Of_Football_Quotes_Metaboxes {
+class Spirit_Of_Football_Quotes_Metabox {
 
 	/**
 	 * Plugin object.
@@ -43,10 +43,35 @@ class Spirit_Of_Football_Quotes_Metaboxes {
 	 * Constructor.
 	 *
 	 * @since 0.1
+	 *
+	 * @param object $parent The parent object.
 	 */
-	public function __construct() {
+	public function __construct( $parent ) {
 
-		// Nothing.
+		// Store reference to plugin.
+		$this->plugin = $parent;
+
+		// Init when this plugin is loaded.
+		add_action( 'sof_quotes/loaded', [ $this, 'initialise' ] );
+
+	}
+
+	/**
+	 * Initialises this object.
+	 *
+	 * @since 0.1.1
+	 */
+	public function initialise() {
+
+		// Bootstrap class.
+		$this->register_hooks();
+
+		/**
+		 * Broadcast that this class is active.
+		 *
+		 * @since 0.1.1
+		 */
+		do_action( 'sof_orgs/metabox/loaded' );
 
 	}
 

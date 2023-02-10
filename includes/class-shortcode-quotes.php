@@ -1,8 +1,8 @@
 <?php
 /**
- * Custom Shortcodes Class.
+ * Custom Shortcode Class.
  *
- * Handles all Shortcodes for Quotes.
+ * Handles all Shortcode for Quotes.
  *
  * @since 0.1
  *
@@ -13,13 +13,13 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Custom Shortcodes Class.
+ * Custom Shortcode Class.
  *
- * A class that encapsulates all Shortcodes for Quotes.
+ * A class that encapsulates a Shortcode for Quotes.
  *
  * @since 0.1
  */
-class Spirit_Of_Football_Quotes_Shortcodes {
+class Spirit_Of_Football_Quotes_Shortcode {
 
 	/**
 	 * Plugin object.
@@ -34,10 +34,35 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 	 * Constructor.
 	 *
 	 * @since 0.1
+	 *
+	 * @param object $parent The parent object.
 	 */
-	public function __construct() {
+	public function __construct( $parent ) {
 
-		// Nothing.
+		// Store reference to plugin.
+		$this->plugin = $parent;
+
+		// Init when this plugin is loaded.
+		add_action( 'sof_quotes/loaded', [ $this, 'initialise' ] );
+
+	}
+
+	/**
+	 * Initialises this object.
+	 *
+	 * @since 0.1.1
+	 */
+	public function initialise() {
+
+		// Bootstrap class.
+		$this->register_hooks();
+
+		/**
+		 * Broadcast that this class is active.
+		 *
+		 * @since 0.1.1
+		 */
+		do_action( 'sof_orgs/shortcode/loaded' );
 
 	}
 

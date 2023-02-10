@@ -1,10 +1,8 @@
 <?php
 /**
- * Random Featured Quote Widget Class.
+ * Random Featured Quote Widget class.
  *
  * Handles the display of a Random Featured Quote Widget.
- *
- * @since 0.1
  *
  * @package Spirit_Of_Football_Quotes
  */
@@ -26,16 +24,18 @@ class SOF_Quote_Widget extends WP_Widget {
 	 */
 	public function __construct() {
 
+		// Args.
+		$args = [
+			'description' => __( 'Use this widget to show a random featured quote.', 'sof-quotes' ),
+		];
+
 		// Init parent.
 		parent::__construct(
 			// Base ID.
 			'sof_random_quote',
 			// Widget Title.
 			__( 'Quote (Random Featured)', 'sof-quotes' ),
-			// Args.
-			[
-				'description' => __( 'Use this widget to show a random featured quote.', 'sof-quotes' ),
-			]
+			$args
 		);
 
 	}
@@ -161,6 +161,3 @@ class SOF_Quote_Widget extends WP_Widget {
 	}
 
 }
-
-// Register this widget.
-register_widget( 'SOF_Quote_Widget' );

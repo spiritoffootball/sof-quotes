@@ -76,14 +76,39 @@ class Spirit_Of_Football_Quotes {
 	 */
 	public function __construct() {
 
-		// Include files.
+		// Initialise on "plugins_loaded".
+		add_action( 'plugins_loaded', [ $this, 'initialise' ] );
+
+	}
+
+	/**
+	 * Initialise this plugin.
+	 *
+	 * @since 0.1.1
+	 */
+	public function initialise() {
+
+		// Only do this once.
+		static $done;
+		if ( isset( $done ) && $done === true ) {
+			return;
+		}
+
+		// Bootstrap plugin.
+		$this->translation();
 		$this->include_files();
-
-		// Setup globals.
 		$this->setup_globals();
-
-		// Register hooks.
 		$this->register_hooks();
+
+		/**
+		 * Broadcast that this plugin is now loaded.
+		 *
+		 * @since 0.1.1
+		 */
+		do_action( 'sof_quotes/loaded' );
+
+		// We're done.
+		$done = true;
 
 	}
 
@@ -94,13 +119,9 @@ class Spirit_Of_Football_Quotes {
 	 */
 	public function include_files() {
 
-		// Include CPT class.
+		// Include files.
 		include_once SOF_QUOTES_PATH . 'includes/class-cpt-quotes.php';
-
-		// Include Metaboxes class.
 		include_once SOF_QUOTES_PATH . 'includes/class-metabox-quotes.php';
-
-		// Include Shortcodes class.
 		include_once SOF_QUOTES_PATH . 'includes/class-shortcode-quotes.php';
 
 	}
@@ -112,14 +133,10 @@ class Spirit_Of_Football_Quotes {
 	 */
 	public function setup_globals() {
 
-		// Init CPT object.
-		$this->cpt = new Spirit_Of_Football_Quotes_CPT();
-
-		// Init Metaboxes object.
-		$this->metaboxes = new Spirit_Of_Football_Quotes_Metaboxes();
-
-		// Init Shortcodes object.
-		$this->shortcodes = new Spirit_Of_Football_Quotes_Shortcodes();
+		// Instantiate objects.
+		$this->cpt = new Spirit_Of_Football_Quotes_CPT( $this );
+		$this->metabox = new Spirit_Of_Football_Quotes_Metabox( $this );
+		$this->shortcode = new Spirit_Of_Football_Quotes_Shortcode( $this );
 
 	}
 
@@ -130,40 +147,46 @@ class Spirit_Of_Football_Quotes {
 	 */
 	public function register_hooks() {
 
-		// Use translation.
-		add_action( 'plugins_loaded', [ $this, 'translation' ] );
-
-		// Hooks that always need to be present.
-		$this->cpt->register_hooks();
-		$this->metaboxes->register_hooks();
-		$this->shortcodes->register_hooks();
-
-		// Add widgets.
+		// Initialise widgets.
 		add_action( 'widgets_init', [ $this, 'register_widgets' ] );
 
 	}
 
 	/**
-	 * Actions to perform on plugin activation.
+	 * Perform plugin activation tasks.
 	 *
-	 * @since 0.1
+	 * @since 0.1.1
 	 */
 	public function activate() {
 
-		// Pass through.
-		$this->cpt->activate();
+		// Maybe init.
+		$this->initialise();
+
+		/**
+		 * Broadcast plugin activation.
+		 *
+		 * @since 0.1.1
+		 */
+		do_action( 'sof_quotes/activate' );
 
 	}
 
 	/**
-	 * Actions to perform on plugin deactivation (NOT deletion)
+	 * Perform plugin deactivation tasks.
 	 *
-	 * @since 0.1
+	 * @since 0.1.1
 	 */
 	public function deactivate() {
 
-		// Pass through.
-		$this->cpt->deactivate();
+		// Maybe init.
+		$this->initialise();
+
+		/**
+		 * Broadcast plugin deactivation.
+		 *
+		 * @since 0.1.1
+		 */
+		do_action( 'sof_quotes/deactivate' );
 
 	}
 
@@ -193,6 +216,9 @@ class Spirit_Of_Football_Quotes {
 
 		// Include widgets.
 		require_once SOF_QUOTES_PATH . 'widgets/sof-quotes-widget-random.php';
+
+		// Register widgets.
+		register_widget( 'SOF_Quote_Widget' );
 
 	}
 
