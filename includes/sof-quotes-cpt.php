@@ -22,6 +22,60 @@ defined( 'ABSPATH' ) || exit;
 class Spirit_Of_Football_Quotes_CPT {
 
 	/**
+	 * Custom Post Type name.
+	 *
+	 * @since 1.0
+	 * @access public
+	 * @var string $post_type_name The name of the Custom Post Type.
+	 */
+	public $post_type_name = 'quote';
+
+	/**
+	 * Custom Post Type REST base.
+	 *
+	 * @since 1.0
+	 * @access public
+	 * @var string $post_type_rest_base The REST base of the Custom Post Type.
+	 */
+	public $post_type_rest_base = 'quotes';
+
+	/**
+	 * Taxonomy name.
+	 *
+	 * @since 1.0
+	 * @access public
+	 * @var str $taxonomy_name The name of the Custom Taxonomy.
+	 */
+	public $taxonomy_name = 'quote-type';
+
+	/**
+	 * Taxonomy REST base.
+	 *
+	 * @since 1.0
+	 * @access public
+	 * @var str $taxonomy_rest_base The REST base of the Custom Taxonomy.
+	 */
+	public $taxonomy_rest_base = 'quote-type';
+
+	/**
+	 * Free Taxonomy name.
+	 *
+	 * @since 1.0
+	 * @access public
+	 * @var str $taxonomy_name The name of the Custom Taxonomy.
+	 */
+	public $taxonomy_free_name = 'quote-tag';
+
+	/**
+	 * Free Taxonomy REST base.
+	 *
+	 * @since 1.0
+	 * @access public
+	 * @var str $taxonomy_rest_base The REST base of the Custom Taxonomy.
+	 */
+	public $taxonomy_free_rest_base = 'quote-tags';
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 0.1
@@ -39,11 +93,19 @@ class Spirit_Of_Football_Quotes_CPT {
 	 */
 	public function register_hooks() {
 
-		// Always create post types.
-		add_action( 'init', [ $this, 'create_post_types' ] );
+		// Always create post type.
+		add_action( 'init', [ $this, 'post_type_create' ] );
 
 		// Make sure our feedback is appropriate.
-		add_filter( 'post_updated_messages', [ $this, 'updated_messages' ] );
+		add_filter( 'post_updated_messages', [ $this, 'post_type_messages' ] );
+
+		// Create primary taxonomy.
+		add_action( 'init', [ $this, 'taxonomy_primary_create' ] );
+		add_filter( 'wp_terms_checklist_args', [ $this, 'taxonomy_primary_metabox_fix' ], 10, 2 );
+		add_action( 'restrict_manage_posts', [ $this, 'taxonomy_primary_post_type_filter' ] );
+
+		// Create free taxonomy.
+		add_action( 'init', [ $this, 'taxonomy_free_create' ] );
 
 	}
 
@@ -55,7 +117,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	public function activate() {
 
 		// Pass through.
-		$this->create_post_types();
+		$this->post_type_create();
 
 		// Go ahead and flush.
 		flush_rewrite_rules();
@@ -81,59 +143,74 @@ class Spirit_Of_Football_Quotes_CPT {
 	 *
 	 * @since 0.1
 	 */
-	public function create_post_types() {
+	public function post_type_create() {
 
 		// Only call this once.
 		static $registered;
-
-		// Bail if already done.
 		if ( $registered ) {
 			return;
 		}
 
-		// Set up the post type called "Quote".
-		register_post_type( 'quote',
-			[
-				'labels' => [
-					'name' => __( 'Quotes', 'sof-quotes' ),
-					'singular_name' => __( 'Quote', 'sof-quotes' ),
-					'add_new' => _x( 'Add New', 'quote', 'sof-quotes' ),
-					'add_new_item' => __( 'Add New Quote', 'sof-quotes' ),
-					'edit_item' => __( 'Edit Quote', 'sof-quotes' ),
-					'new_item' => __( 'New Quote', 'sof-quotes' ),
-					'all_items' => __( 'All Quotes', 'sof-quotes' ),
-					'view_item' => __( 'View Quote', 'sof-quotes' ),
-					'item_published' => __( 'Quote published.', 'sof-quotes' ),
-					'item_published_privately' => __( 'Quote published privately.', 'sof-quotes' ),
-					'item_reverted_to_draft' => __( 'Quote reverted to draft.', 'sof-quotes' ),
-					'item_scheduled' => __( 'Quote scheduled.', 'sof-quotes' ),
-					'item_updated' => __( 'Quote updated.', 'sof-quotes' ),
-					'search_items' => __( 'Search Quotes', 'sof-quotes' ),
-					'not_found' => __( 'No matching Quote found', 'sof-quotes' ),
-					'not_found_in_trash' => __( 'No Quotes found in Trash', 'sof-quotes' ),
-					'parent_item_colon' => '',
-					'menu_name' => __( 'Quotes', 'sof-quotes' ),
-				],
-				'public' => true,
-				'publicly_queryable' => true,
-				'has_archive' => true,
-				'show_ui' => true,
-				'rewrite' => [
-					'slug' => 'quotes',
-					'with_front' => false,
-				],
-				'query_var' => true,
-				'capability_type' => 'post',
-				'hierarchical' => true,
-				'show_in_nav_menus' => false,
-				'menu_position' => 5,
-				'exclude_from_search' => false,
-				'supports' => [
-					'title',
-					'editor',
-				],
-			]
-		);
+		$labels = [
+			'name' => __( 'Quotes', 'sof-quotes' ),
+			'singular_name' => __( 'Quote', 'sof-quotes' ),
+			'add_new' => _x( 'Add New', 'quote', 'sof-quotes' ),
+			'add_new_item' => __( 'Add New Quote', 'sof-quotes' ),
+			'edit_item' => __( 'Edit Quote', 'sof-quotes' ),
+			'new_item' => __( 'New Quote', 'sof-quotes' ),
+			'all_items' => __( 'All Quotes', 'sof-quotes' ),
+			'view_item' => __( 'View Quote', 'sof-quotes' ),
+			'item_published' => __( 'Quote published.', 'sof-quotes' ),
+			'item_published_privately' => __( 'Quote published privately.', 'sof-quotes' ),
+			'item_reverted_to_draft' => __( 'Quote reverted to draft.', 'sof-quotes' ),
+			'item_scheduled' => __( 'Quote scheduled.', 'sof-quotes' ),
+			'item_updated' => __( 'Quote updated.', 'sof-quotes' ),
+			'search_items' => __( 'Search Quotes', 'sof-quotes' ),
+			'not_found' => __( 'No matching Quote found', 'sof-quotes' ),
+			'not_found_in_trash' => __( 'No Quotes found in Trash', 'sof-quotes' ),
+			'parent_item_colon' => '',
+			'menu_name' => __( 'Quotes', 'sof-quotes' ),
+		];
+
+		// Set up the Custom Post Type called "Quote".
+		register_post_type( $this->post_type_name, [
+
+			'labels' => $labels,
+
+			// Defaults.
+			'description' => __( 'A quote post type', 'sof-organisations' ),
+			'public' => true,
+			'publicly_queryable' => true,
+			'exclude_from_search' => false,
+			'hierarchical' => true,
+			'has_archive' => true,
+			'menu_icon' => 'dashicons-format-quote',
+			'menu_position' => 5,
+			'show_ui' => true,
+			'show_in_nav_menus' => true,
+			'show_in_menu' => true,
+			'show_in_admin_bar' => true,
+			'query_var' => true,
+			'capability_type' => 'post',
+			'map_meta_cap' => true,
+
+			// Rewrite.
+			'rewrite' => [
+				'slug' => 'quotes',
+				'with_front' => false,
+			],
+
+			// Supports.
+			'supports' => [
+				'title',
+				'editor',
+			],
+
+			// REST setup.
+			'show_in_rest' => true,
+			'rest_base' => $this->post_type_rest_base,
+
+		] );
 
 		// Flag.
 		$registered = true;
@@ -141,18 +218,18 @@ class Spirit_Of_Football_Quotes_CPT {
 	}
 
 	/**
-	 * Override messages for a custom post type.
+	 * Overrides messages for a Custom Post Type.
 	 *
 	 * @param array $messages The existing messages.
 	 * @return array $messages The modified messages.
 	 */
-	public function updated_messages( $messages ) {
+	public function post_type_messages( $messages ) {
 
 		// Access relevant globals.
 		global $post, $post_ID;
 
-		// Define custom messages for our custom post type.
-		$messages['quote'] = [
+		// Define custom messages for our Custom Post Type.
+		$messages[ $this->post_type_name ] = [
 
 			// Unused - messages start at index 1.
 			0 => '',
@@ -222,6 +299,195 @@ class Spirit_Of_Football_Quotes_CPT {
 
 		// --<
 		return $messages;
+
+	}
+
+	// -------------------------------------------------------------------------
+
+	/**
+	 * Creates our Custom Taxonomy.
+	 *
+	 * @since 1.0
+	 */
+	public function taxonomy_primary_create() {
+
+		// Only register once.
+		static $registered;
+		if ( $registered ) {
+			return;
+		}
+
+		// Arguments.
+		$args = [
+
+			// Same as "category".
+			'hierarchical' => true,
+
+			// Labels.
+			'labels' => [
+				'name'              => _x( 'Quote Types', 'taxonomy general name', 'sof-organisations' ),
+				'singular_name'     => _x( 'Quote Type', 'taxonomy singular name', 'sof-organisations' ),
+				'search_items'      => __( 'Search Quote Types', 'sof-organisations' ),
+				'all_items'         => __( 'All Quote Types', 'sof-organisations' ),
+				'parent_item'       => __( 'Parent Quote Type', 'sof-organisations' ),
+				'parent_item_colon' => __( 'Parent Quote Type:', 'sof-organisations' ),
+				'edit_item'         => __( 'Edit Quote Type', 'sof-organisations' ),
+				'update_item'       => __( 'Update Quote Type', 'sof-organisations' ),
+				'add_new_item'      => __( 'Add New Quote Type', 'sof-organisations' ),
+				'new_item_name'     => __( 'New Quote Type Name', 'sof-organisations' ),
+				'menu_name'         => __( 'Quote Types', 'sof-organisations' ),
+				'not_found'         => __( 'No Quote Types found', 'sof-organisations' ),
+			],
+
+			// Rewrite rules.
+			'rewrite' => [
+				'slug' => 'quotes/types',
+				'with_front' => true,
+			],
+
+			// Show column in wp-admin.
+			'show_admin_column' => true,
+			'show_ui' => true,
+
+			// REST setup.
+			'show_in_rest' => true,
+			'rest_base' => $this->taxonomy_rest_base,
+
+		];
+
+		// Register a taxonomy for this CPT.
+		register_taxonomy( $this->taxonomy_name, $this->post_type_name, $args );
+
+		// Flag done.
+		$registered = true;
+
+	}
+
+	/**
+	 * Fixes the Custom Taxonomy metabox.
+	 *
+	 * @see https://core.trac.wordpress.org/ticket/10982
+	 *
+	 * @since 1.0
+	 *
+	 * @param array $args The existing arguments.
+	 * @param int $post_id The WordPress post ID.
+	 */
+	public function taxonomy_primary_metabox_fix( $args, $post_id ) {
+
+		// If rendering metabox for our taxonomy.
+		if ( isset( $args['taxonomy'] ) && $args['taxonomy'] === $this->taxonomy_name ) {
+
+			// Setting 'checked_ontop' to false seems to fix this.
+			$args['checked_ontop'] = false;
+
+		}
+
+		// --<
+		return $args;
+
+	}
+
+	/**
+	 * Adds a filter for this Custom Taxonomy to the Custom Post Type listing.
+	 *
+	 * @since 1.0
+	 */
+	public function taxonomy_primary_post_type_filter() {
+
+		// Access current post type.
+		global $typenow;
+
+		// Bail if not our post type.
+		if ( $typenow != $this->post_type_name ) {
+			return;
+		}
+
+		// Get tax object.
+		$taxonomy = get_taxonomy( $this->taxonomy_name );
+
+		// Show a dropdown.
+		wp_dropdown_categories( [
+			/* translators: %s: The plural name of the taxonomy terms. */
+			'show_option_all' => sprintf( __( 'Show All %s', 'sof-organisations' ), $taxonomy->label ),
+			'taxonomy' => $this->taxonomy_name,
+			'name' => $this->taxonomy_name,
+			'orderby' => 'name',
+			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Recommended
+			'selected' => isset( $_GET[ $this->taxonomy_name ] ) ? wp_unslash( $_GET[ $this->taxonomy_name ] ) : '',
+			'show_count' => true,
+			'hide_empty' => true,
+			'value_field' => 'slug',
+			'hierarchical' => 1,
+		] );
+
+	}
+
+	// -------------------------------------------------------------------------
+
+	/**
+	 * Creates a free-tagging Taxonomy for Quotes.
+	 *
+	 * @since 4.0
+	 */
+	public function taxonomy_free_create() {
+
+		// Only register once.
+		static $registered;
+		if ( $registered ) {
+			return;
+		}
+
+		// Define Taxonomy arguments.
+		$args = [
+
+			// General.
+			'public' => true,
+			'hierarchical' => false,
+
+			// Labels.
+			'labels' => [
+				'name' =>                       __( 'Quote Tags', 'sof-quotes' ),
+				'singular_name' =>              __( 'Quote Tag', 'sof-quotes' ),
+				'menu_name' =>                  __( 'Quote Tags', 'sof-quotes' ),
+				'search_items' =>               __( 'Search Quote Tags', 'sof-quotes' ),
+				'popular_items' =>              __( 'Popular Quote Tags', 'sof-quotes' ),
+				'all_items' =>                  __( 'All Quote Tags', 'sof-quotes' ),
+				'edit_item' =>                  __( 'Edit Quote Tag', 'sof-quotes' ),
+				'update_item' =>                __( 'Update Quote Tag', 'sof-quotes' ),
+				'add_new_item' =>               __( 'Add New Quote Tag', 'sof-quotes' ),
+				'new_item_name' =>              __( 'New Quote Tag Name', 'sof-quotes' ),
+				'separate_items_with_commas' => __( 'Separate Quote Tags with commas', 'sof-quotes' ),
+				'add_or_remove_items' =>        __( 'Add or remove Quote Tag', 'sof-quotes' ),
+				'choose_from_most_used' =>      __( 'Choose from the most popular Quote Tags', 'sof-quotes' ),
+			],
+
+			// Permalinks.
+			'rewrite' => [
+				'slug' => 'quotes/tags',
+				'with_front' => true,
+			],
+
+			// Capabilities.
+			'capabilities' => [
+				'manage_terms' => 'manage_categories',
+				'edit_terms' => 'manage_categories',
+				'delete_terms' => 'manage_categories',
+				'assign_terms' => 'assign_' . $this->taxonomy_free_name,
+			],
+
+			// Show column in wp-admin.
+			'show_admin_column' => true,
+			'show_ui' => true,
+
+			// REST setup.
+			'show_in_rest' => true,
+			'rest_base' => $this->taxonomy_rest_base,
+
+		];
+
+		// Go ahead and register the Taxonomy now.
+		register_taxonomy( $this->taxonomy_free_name, $this->post_type_name, $args );
 
 	}
 
