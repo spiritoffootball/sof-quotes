@@ -49,7 +49,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	public $post_type_rest_base = 'quotes';
 
 	/**
-	 * Taxonomy name.
+	 * Primary Taxonomy name.
 	 *
 	 * @since 0.1
 	 * @access public
@@ -58,7 +58,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	public $taxonomy_name = 'quote-type';
 
 	/**
-	 * Taxonomy REST base.
+	 * Primary Taxonomy REST base.
 	 *
 	 * @since 0.1
 	 * @access public
@@ -67,11 +67,29 @@ class Spirit_Of_Football_Quotes_CPT {
 	public $taxonomy_rest_base = 'quote-type';
 
 	/**
+	 * Statement Term slug.
+	 *
+	 * @since 0.1
+	 * @access public
+	 * @var str $term_statement The slug of the Statement Term.
+	 */
+	public $term_statement = 'statement';
+
+	/**
+	 * Pledge Term slug.
+	 *
+	 * @since 0.1
+	 * @access public
+	 * @var str $pledge The slug of the Pledge Term.
+	 */
+	public $term_pledge = 'pledge';
+
+	/**
 	 * Free Taxonomy name.
 	 *
 	 * @since 0.1
 	 * @access public
-	 * @var str $taxonomy_name The name of the Custom Taxonomy.
+	 * @var str $taxonomy_free_name The name of the Custom Taxonomy.
 	 */
 	public $taxonomy_free_name = 'quote-tag';
 
@@ -80,7 +98,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	 *
 	 * @since 0.1
 	 * @access public
-	 * @var str $taxonomy_rest_base The REST base of the Custom Taxonomy.
+	 * @var str $taxonomy_free_rest_base The REST base of the Custom Taxonomy.
 	 */
 	public $taxonomy_free_rest_base = 'quote-tags';
 
@@ -238,6 +256,7 @@ class Spirit_Of_Football_Quotes_CPT {
 			'supports' => [
 				'title',
 				'editor',
+				'thumbnail',
 			],
 
 			// REST setup.

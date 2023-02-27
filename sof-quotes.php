@@ -52,22 +52,31 @@ class Spirit_Of_Football_Quotes {
 	public $cpt;
 
 	/**
-	 * Metaboxes object.
+	 * Metabox object.
 	 *
 	 * @since 0.1
 	 * @access public
-	 * @var object $metaboxes The Metaboxes object.
+	 * @var object $metabox The Metabox object.
 	 */
-	public $metaboxes;
+	public $metabox;
 
 	/**
-	 * Shortcodes object.
+	 * Shortcode object.
 	 *
 	 * @since 0.1
 	 * @access public
-	 * @var object $shortcodes The Shortcodes object.
+	 * @var object $shortcod The Shortcode object.
 	 */
-	public $shortcodes;
+	public $shortcode;
+
+	/**
+	 * ACF loader object.
+	 *
+	 * @since 0.1.1
+	 * @access public
+	 * @var object $acf The ACF loader object.
+	 */
+	public $acf;
 
 	/**
 	 * Constructor.
@@ -123,6 +132,7 @@ class Spirit_Of_Football_Quotes {
 		include_once SOF_QUOTES_PATH . 'includes/class-cpt-quotes.php';
 		include_once SOF_QUOTES_PATH . 'includes/class-metabox-quotes.php';
 		include_once SOF_QUOTES_PATH . 'includes/class-shortcode-quotes.php';
+		include_once SOF_QUOTES_PATH . 'includes/class-acf-quotes.php';
 
 	}
 
@@ -137,6 +147,7 @@ class Spirit_Of_Football_Quotes {
 		$this->cpt = new Spirit_Of_Football_Quotes_CPT( $this );
 		$this->metabox = new Spirit_Of_Football_Quotes_Metabox( $this );
 		$this->shortcode = new Spirit_Of_Football_Quotes_Shortcode( $this );
+		$this->acf = new Spirit_Of_Football_Quotes_ACF( $this );
 
 	}
 
