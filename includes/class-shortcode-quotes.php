@@ -74,7 +74,7 @@ class Spirit_Of_Football_Quotes_Shortcode {
 	public function register_hooks() {
 
 		// Register shortcodes.
-		add_shortcode( 'quote', [ $this, 'quote_shortcode' ] );
+		add_shortcode( 'quote', [ $this, 'shortcode_render' ] );
 
 	}
 
