@@ -237,7 +237,7 @@ class Spirit_Of_Football_Quotes_CPT {
 			'hierarchical' => true,
 			'has_archive' => true,
 			'menu_icon' => 'dashicons-format-quote',
-			'menu_position' => 5,
+			'menu_position' => 30,
 			'show_ui' => true,
 			'show_in_nav_menus' => true,
 			'show_in_menu' => true,
