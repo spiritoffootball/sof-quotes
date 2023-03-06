@@ -12,7 +12,9 @@ defined( 'ABSPATH' ) || exit;
 
 ?><!-- content-quote.php -->
 <style>
-.quote cite:before { content: '- '; }
+	.quote cite:before {
+		content: '- ';
+	}
 </style>
 <article <?php post_class( $class ); ?> id="post-<?php the_ID(); ?>" style="position: relative;">
 	<div class="entry-content">

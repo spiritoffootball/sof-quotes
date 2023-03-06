@@ -148,7 +148,15 @@ class Spirit_Of_Football_Quotes_Shortcode {
 
 			while ( $quotes->have_posts() ) :
 				$quotes->the_post();
-				include SOF_QUOTES_PATH . 'assets/templates/content-quote-shortcode.php';
+
+				if ( has_term( 'pledge', 'quote-type' ) ) :
+					get_template_part( 'template-parts/content', 'quote-pledge' );
+				elseif ( has_term( 'statement', 'quote-type' ) ) :
+					get_template_part( 'template-parts/content', 'quote-statement' );
+				else:
+					include SOF_QUOTES_PATH . 'assets/templates/content-quote-shortcode.php';
+				 endif;
+
 			endwhile;
 
 			// Get the quote.
