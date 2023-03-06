@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since 0.1
  */
-class Spirit_Of_Football_Quotes_Shortcode {
+class Spirit_Of_Football_Quotes_Shortcode_Single {
 
 	/**
 	 * Plugin object.
@@ -43,7 +43,7 @@ class Spirit_Of_Football_Quotes_Shortcode {
 		$this->plugin = $parent;
 
 		// Init when this plugin is loaded.
-		add_action( 'sof_quotes/loaded', [ $this, 'initialise' ] );
+		add_action( 'sof_quotes/shortcodes/loaded', [ $this, 'initialise' ] );
 
 	}
 
@@ -62,7 +62,7 @@ class Spirit_Of_Football_Quotes_Shortcode {
 		 *
 		 * @since 0.1.1
 		 */
-		do_action( 'sof_orgs/shortcode/loaded' );
+		do_action( 'sof_quotes/shortcode/single/loaded' );
 
 	}
 
@@ -156,7 +156,6 @@ class Spirit_Of_Football_Quotes_Shortcode {
 				else:
 					include SOF_QUOTES_PATH . 'assets/templates/content-quote-shortcode.php';
 				 endif;
-
 			endwhile;
 
 			// Get the quote.
