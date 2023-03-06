@@ -522,14 +522,6 @@ class Spirit_Of_Football_Quotes_CPT {
 				'with_front' => true,
 			],
 
-			// Capabilities.
-			'capabilities' => [
-				'manage_terms' => 'manage_categories',
-				'edit_terms' => 'manage_categories',
-				'delete_terms' => 'manage_categories',
-				'assign_terms' => 'assign_' . $this->taxonomy_free_name,
-			],
-
 			// Show column in wp-admin.
 			'show_admin_column' => true,
 			'show_ui' => true,
