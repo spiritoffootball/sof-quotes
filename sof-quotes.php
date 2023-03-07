@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/spiritoffootball/sof-quotes
  * Description: Provides Quotes and associated functionality.
  * Author: Christian Wach
- * Version: 0.2
+ * Version: 1.0.0a
  * Author URI: https://haystack.co.uk
  * Text Domain: sof-quotes
  * Domain Path: /languages
@@ -16,7 +16,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // Set our version here.
-define( 'SOF_QUOTES_VERSION', '0.2' );
+define( 'SOF_QUOTES_VERSION', '1.0.0a' );
 
 // Store reference to this file.
 if ( ! defined( 'SOF_QUOTES_FILE' ) ) {
