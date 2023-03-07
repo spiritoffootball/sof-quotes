@@ -26,7 +26,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	 *
 	 * @since 0.1
 	 * @access public
-	 * @var object $plugin The plugin object.
+	 * @var object
 	 */
 	public $plugin;
 
@@ -35,7 +35,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	 *
 	 * @since 0.1
 	 * @access public
-	 * @var string $post_type_name The name of the Custom Post Type.
+	 * @var string
 	 */
 	public $post_type_name = 'quote';
 
@@ -44,7 +44,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	 *
 	 * @since 0.1
 	 * @access public
-	 * @var string $post_type_rest_base The REST base of the Custom Post Type.
+	 * @var string
 	 */
 	public $post_type_rest_base = 'quotes';
 
@@ -53,7 +53,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	 *
 	 * @since 0.1
 	 * @access public
-	 * @var str $taxonomy_name The name of the Custom Taxonomy.
+	 * @var string
 	 */
 	public $taxonomy_name = 'quote-type';
 
@@ -62,7 +62,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	 *
 	 * @since 0.1
 	 * @access public
-	 * @var str $taxonomy_rest_base The REST base of the Custom Taxonomy.
+	 * @var string
 	 */
 	public $taxonomy_rest_base = 'quote-type';
 
@@ -71,7 +71,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	 *
 	 * @since 0.1
 	 * @access public
-	 * @var str $term_statement The slug of the Statement Term.
+	 * @var string
 	 */
 	public $term_statement = 'statement';
 
@@ -80,7 +80,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	 *
 	 * @since 0.1
 	 * @access public
-	 * @var str $pledge The slug of the Pledge Term.
+	 * @var string
 	 */
 	public $term_pledge = 'pledge';
 
@@ -89,7 +89,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	 *
 	 * @since 0.1
 	 * @access public
-	 * @var str $taxonomy_free_name The name of the Custom Taxonomy.
+	 * @var string
 	 */
 	public $taxonomy_free_name = 'quote-tag';
 
@@ -98,7 +98,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	 *
 	 * @since 0.1
 	 * @access public
-	 * @var str $taxonomy_free_rest_base The REST base of the Custom Taxonomy.
+	 * @var string
 	 */
 	public $taxonomy_free_rest_base = 'quote-tags';
 

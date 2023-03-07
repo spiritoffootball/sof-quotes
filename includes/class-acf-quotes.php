@@ -24,7 +24,7 @@ class Spirit_Of_Football_Quotes_ACF {
 	 *
 	 * @since 0.1.1
 	 * @access public
-	 * @var object $plugin The plugin object.
+	 * @var object
 	 */
 	public $plugin;
 
@@ -33,7 +33,7 @@ class Spirit_Of_Football_Quotes_ACF {
 	 *
 	 * @since 0.1.1
 	 * @access public
-	 * @var object $group_prefix The prefix of the ACF Field Group.
+	 * @var string
 	 */
 	public $group_prefix = 'group_sof_quote_';
 
@@ -42,7 +42,7 @@ class Spirit_Of_Football_Quotes_ACF {
 	 *
 	 * @since 0.1.1
 	 * @access public
-	 * @var object $field_statement_prefix The unique prefix of the Statement ACF Fields.
+	 * @var string
 	 */
 	public $field_statement_prefix = 'field_sof_quote_statement_';
 
@@ -51,7 +51,7 @@ class Spirit_Of_Football_Quotes_ACF {
 	 *
 	 * @since 0.1.1
 	 * @access public
-	 * @var object $field_statement_prefix The unique prefix of the Pledge ACF Fields.
+	 * @var string
 	 */
 	public $field_pledge_prefix = 'field_sof_quote_pledge_';
 

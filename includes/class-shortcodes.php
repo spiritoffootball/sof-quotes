@@ -26,7 +26,7 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 	 *
 	 * @since 0.2
 	 * @access public
-	 * @var object $plugin The plugin object.
+	 * @var object
 	 */
 	public $plugin;
 
@@ -35,7 +35,7 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 	 *
 	 * @since 0.2
 	 * @access public
-	 * @var object $single The Single Quote Shortcode object.
+	 * @var object
 	 */
 	public $single;
 
@@ -44,7 +44,7 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 	 *
 	 * @since 0.2
 	 * @access public
-	 * @var object $slider The Quote Slider Shortcode object.
+	 * @var object
 	 */
 	public $slider;
 

@@ -47,7 +47,7 @@ class Spirit_Of_Football_Quotes {
 	 *
 	 * @since 0.1
 	 * @access public
-	 * @var object $cpt The Custom Post Type object.
+	 * @var object
 	 */
 	public $cpt;
 
@@ -56,7 +56,7 @@ class Spirit_Of_Football_Quotes {
 	 *
 	 * @since 0.1
 	 * @access public
-	 * @var object $metabox The Metabox object.
+	 * @var object
 	 */
 	public $metabox;
 
@@ -65,7 +65,7 @@ class Spirit_Of_Football_Quotes {
 	 *
 	 * @since 0.1
 	 * @access public
-	 * @var object $shortcodes The Shortcodes object.
+	 * @var object
 	 */
 	public $shortcodes;
 
@@ -74,7 +74,7 @@ class Spirit_Of_Football_Quotes {
 	 *
 	 * @since 0.1.1
 	 * @access public
-	 * @var object $acf The ACF loader object.
+	 * @var object
 	 */
 	public $acf;
 

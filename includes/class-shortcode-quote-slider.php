@@ -26,7 +26,7 @@ class Spirit_Of_Football_Quotes_Shortcode_Slider {
 	 *
 	 * @since 0.2
 	 * @access public
-	 * @var object $plugin The plugin object.
+	 * @var object
 	 */
 	public $plugin;
 
