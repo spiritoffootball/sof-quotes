@@ -528,7 +528,7 @@ class Spirit_Of_Football_Quotes_CPT {
 
 			// REST setup.
 			'show_in_rest' => true,
-			'rest_base' => $this->taxonomy_rest_base,
+			'rest_base' => $this->taxonomy_free_rest_base,
 
 		];
 
