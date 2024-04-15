@@ -1,11 +1,13 @@
 <?php
 /**
+ * SOF Quotes
+ *
  * Plugin Name: SOF Quotes
- * Plugin URI: https://github.com/spiritoffootball/sof-quotes
  * Description: Provides Quotes and associated functionality.
- * Author: Christian Wach
- * Version: 1.0.1
- * Author URI: https://haystack.co.uk
+ * Plugin URI:  https://github.com/spiritoffootball/sof-quotes
+ * Author:      Christian Wach
+ * Author URI:  https://haystack.co.uk
+ * Version:     1.0.1
  * Text Domain: sof-quotes
  * Domain Path: /languages
  *
@@ -47,7 +49,7 @@ class Spirit_Of_Football_Quotes {
 	 *
 	 * @since 0.1
 	 * @access public
-	 * @var object
+	 * @var Spirit_Of_Football_Quotes_CPT
 	 */
 	public $cpt;
 
@@ -56,7 +58,7 @@ class Spirit_Of_Football_Quotes {
 	 *
 	 * @since 0.1
 	 * @access public
-	 * @var object
+	 * @var Spirit_Of_Football_Quotes_Metabox
 	 */
 	public $metabox;
 
@@ -65,7 +67,7 @@ class Spirit_Of_Football_Quotes {
 	 *
 	 * @since 0.1
 	 * @access public
-	 * @var object
+	 * @var Spirit_Of_Football_Quotes_Shortcodes
 	 */
 	public $shortcodes;
 
@@ -74,7 +76,7 @@ class Spirit_Of_Football_Quotes {
 	 *
 	 * @since 0.1.1
 	 * @access public
-	 * @var object
+	 * @var Spirit_Of_Football_Quotes_ACF
 	 */
 	public $acf;
 

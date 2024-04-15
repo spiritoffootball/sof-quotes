@@ -22,13 +22,13 @@ defined( 'ABSPATH' ) || exit;
 class Spirit_Of_Football_Quotes_Shortcode_Single {
 
 	/**
-	 * Plugin object.
+	 * Shortcodes object.
 	 *
 	 * @since 0.1.1
 	 * @access public
-	 * @var object
+	 * @var Spirit_Of_Football_Quotes_Shortcodes
 	 */
-	public $plugin;
+	public $shortcodes;
 
 	/**
 	 * Constructor.
@@ -39,10 +39,10 @@ class Spirit_Of_Football_Quotes_Shortcode_Single {
 	 */
 	public function __construct( $parent ) {
 
-		// Store reference to plugin.
-		$this->plugin = $parent;
+		// Store reference to Shortcodes object.
+		$this->shortcodes = $parent;
 
-		// Init when this plugin is loaded.
+		// Init when the Shortcodes object is loaded.
 		add_action( 'sof_quotes/shortcodes/loaded', [ $this, 'initialise' ] );
 
 	}

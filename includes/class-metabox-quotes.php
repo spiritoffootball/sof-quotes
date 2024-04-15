@@ -26,7 +26,7 @@ class Spirit_Of_Football_Quotes_Metabox {
 	 *
 	 * @since 0.1.1
 	 * @access public
-	 * @var object
+	 * @var Spirit_Of_Football_Quotes
 	 */
 	public $plugin;
 

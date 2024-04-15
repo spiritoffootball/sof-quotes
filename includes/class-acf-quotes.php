@@ -24,7 +24,7 @@ class Spirit_Of_Football_Quotes_ACF {
 	 *
 	 * @since 0.1.1
 	 * @access public
-	 * @var object
+	 * @var Spirit_Of_Football_Quotes
 	 */
 	public $plugin;
 
