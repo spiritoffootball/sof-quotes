@@ -130,16 +130,16 @@ class Spirit_Of_Football_Quotes_Metabox {
 		$db_key = '_' . $this->featured_meta_key;
 
 		// Default to empty.
-		$val = '';
+		$val = false;
 
 		// Get value if if the custom field already has one.
 		$existing = get_post_meta( $post->ID, $db_key, true );
 		if ( ! empty( $existing ) ) {
-			$val = get_post_meta( $post->ID, $db_key, true );
+			$val = true;
 		}
 
 		// Construct shortcode.
-		$shortcode = esc_attr( '[quote id="' . $post->ID . '"]' );
+		$shortcode = '[quote id="' . $post->ID . '"]';
 
 		// Include template file.
 		include SOF_QUOTES_PATH . 'assets/templates/metabox-quote.php';
@@ -197,10 +197,10 @@ class Spirit_Of_Football_Quotes_Metabox {
 		}
 
 		// Check for revision.
-		if ( $post_obj->post_type == 'revision' ) {
+		if ( 'revision' === $post_obj->post_type ) {
 
 			// Get parent.
-			if ( $post_obj->post_parent != 0 ) {
+			if ( 0 !== (int) $post_obj->post_parent ) {
 				$post = get_post( $post_obj->post_parent );
 			} else {
 				$post = $post_obj;
@@ -211,7 +211,7 @@ class Spirit_Of_Football_Quotes_Metabox {
 		}
 
 		// Bail if not quote post type.
-		if ( $post->post_type == 'quote' ) {
+		if ( 'quote' === $post->post_type ) {
 			return;
 		}
 
@@ -236,8 +236,8 @@ class Spirit_Of_Football_Quotes_Metabox {
 	 * @since 0.1
 	 *
 	 * @param WP_Post $post The WordPress post object.
-	 * @param string $key The meta key.
-	 * @param mixed $data The data to be saved.
+	 * @param string  $key The meta key.
+	 * @param mixed   $data The data to be saved.
 	 * @return mixed $data The data that was saved.
 	 */
 	private function save_meta( $post, $key, $data = '' ) {

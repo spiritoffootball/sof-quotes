@@ -85,7 +85,7 @@ class Spirit_Of_Football_Quotes_Shortcode_Slider {
 	 *
 	 * @since 0.2
 	 *
-	 * @param array $attr The saved Shortcode attributes.
+	 * @param array  $attr The saved Shortcode attributes.
 	 * @param string $content The enclosed content of the Shortcode.
 	 * @param string $tag The Shortcode which invoked the callback.
 	 * @return string $quote The HTML-formatted Shortcode content.

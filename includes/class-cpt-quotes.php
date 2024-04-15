@@ -204,66 +204,69 @@ class Spirit_Of_Football_Quotes_CPT {
 		}
 
 		$labels = [
-			'name' => __( 'Quotes', 'sof-quotes' ),
-			'singular_name' => __( 'Quote', 'sof-quotes' ),
-			'add_new' => _x( 'Add New', 'quote', 'sof-quotes' ),
-			'add_new_item' => __( 'Add New Quote', 'sof-quotes' ),
-			'edit_item' => __( 'Edit Quote', 'sof-quotes' ),
-			'new_item' => __( 'New Quote', 'sof-quotes' ),
-			'all_items' => __( 'All Quotes', 'sof-quotes' ),
-			'view_item' => __( 'View Quote', 'sof-quotes' ),
-			'item_published' => __( 'Quote published.', 'sof-quotes' ),
+			'name'                     => __( 'Quotes', 'sof-quotes' ),
+			'singular_name'            => __( 'Quote', 'sof-quotes' ),
+			'add_new'                  => _x( 'Add New', 'quote', 'sof-quotes' ),
+			'add_new_item'             => __( 'Add New Quote', 'sof-quotes' ),
+			'edit_item'                => __( 'Edit Quote', 'sof-quotes' ),
+			'new_item'                 => __( 'New Quote', 'sof-quotes' ),
+			'all_items'                => __( 'All Quotes', 'sof-quotes' ),
+			'view_item'                => __( 'View Quote', 'sof-quotes' ),
+			'item_published'           => __( 'Quote published.', 'sof-quotes' ),
 			'item_published_privately' => __( 'Quote published privately.', 'sof-quotes' ),
-			'item_reverted_to_draft' => __( 'Quote reverted to draft.', 'sof-quotes' ),
-			'item_scheduled' => __( 'Quote scheduled.', 'sof-quotes' ),
-			'item_updated' => __( 'Quote updated.', 'sof-quotes' ),
-			'search_items' => __( 'Search Quotes', 'sof-quotes' ),
-			'not_found' => __( 'No matching Quote found', 'sof-quotes' ),
-			'not_found_in_trash' => __( 'No Quotes found in Trash', 'sof-quotes' ),
-			'parent_item_colon' => '',
-			'menu_name' => __( 'Quotes', 'sof-quotes' ),
+			'item_reverted_to_draft'   => __( 'Quote reverted to draft.', 'sof-quotes' ),
+			'item_scheduled'           => __( 'Quote scheduled.', 'sof-quotes' ),
+			'item_updated'             => __( 'Quote updated.', 'sof-quotes' ),
+			'search_items'             => __( 'Search Quotes', 'sof-quotes' ),
+			'not_found'                => __( 'No matching Quote found', 'sof-quotes' ),
+			'not_found_in_trash'       => __( 'No Quotes found in Trash', 'sof-quotes' ),
+			'parent_item_colon'        => '',
+			'menu_name'                => __( 'Quotes', 'sof-quotes' ),
 		];
 
-		// Set up the Custom Post Type called "Quote".
-		register_post_type( $this->post_type_name, [
+		// Build args.
+		$args = [
 
-			'labels' => $labels,
+			'labels'              => $labels,
 
 			// Defaults.
-			'description' => __( 'A quote post type', 'sof-quotes' ),
-			'public' => true,
-			'publicly_queryable' => true,
+			'description'         => __( 'A quote post type', 'sof-quotes' ),
+			'public'              => true,
+			'publicly_queryable'  => true,
 			'exclude_from_search' => false,
-			'hierarchical' => true,
-			'has_archive' => true,
-			'menu_icon' => 'dashicons-format-quote',
-			'menu_position' => 30,
-			'show_ui' => true,
-			'show_in_nav_menus' => true,
-			'show_in_menu' => true,
-			'show_in_admin_bar' => true,
-			'query_var' => true,
-			'capability_type' => 'post',
-			'map_meta_cap' => true,
+			'hierarchical'        => true,
+			'has_archive'         => true,
+			'menu_icon'           => 'dashicons-format-quote',
+			'menu_position'       => 30,
+			'show_ui'             => true,
+			'show_in_nav_menus'   => true,
+			'show_in_menu'        => true,
+			'show_in_admin_bar'   => true,
+			'query_var'           => true,
+			'capability_type'     => 'post',
+			'map_meta_cap'        => true,
 
 			// Rewrite.
-			'rewrite' => [
-				'slug' => 'quotes',
+			'rewrite'             => [
+				'slug'       => 'quotes',
 				'with_front' => false,
 			],
 
 			// Supports.
-			'supports' => [
+			'supports'            => [
 				'title',
 				'editor',
 				'thumbnail',
 			],
 
 			// REST setup.
-			'show_in_rest' => true,
-			'rest_base' => $this->post_type_rest_base,
+			'show_in_rest'        => true,
+			'rest_base'           => $this->post_type_rest_base,
 
-		] );
+		];
+
+		// Set up the Custom Post Type called "Quote".
+		register_post_type( $this->post_type_name, $args );
 
 		// Flag.
 		$registered = true;
@@ -285,23 +288,23 @@ class Spirit_Of_Football_Quotes_CPT {
 		$messages[ $this->post_type_name ] = [
 
 			// Unused - messages start at index 1.
-			0 => '',
+			0  => '',
 
 			// Item updated.
-			1 => sprintf(
+			1  => sprintf(
 				/* translators: %s: Post permalink URL. */
 				__( 'Quote updated. <a href="%s">View quote</a>', 'sof-quotes' ),
 				esc_url( get_permalink( $post_ID ) )
 			),
 
 			// Custom fields.
-			2 => __( 'Custom field updated.', 'sof-quotes' ),
-			3 => __( 'Custom field deleted.', 'sof-quotes' ),
-			4 => __( 'Quote updated.', 'sof-quotes' ),
+			2  => __( 'Custom field updated.', 'sof-quotes' ),
+			3  => __( 'Custom field deleted.', 'sof-quotes' ),
+			4  => __( 'Quote updated.', 'sof-quotes' ),
 
 			// Item restored to a revision.
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			5 => isset( $_GET['revision'] ) ?
+			5  => isset( $_GET['revision'] ) ?
 
 				// Revision text.
 				sprintf(
@@ -315,29 +318,28 @@ class Spirit_Of_Football_Quotes_CPT {
 				false,
 
 			// Item published.
-			6 => sprintf(
+			6  => sprintf(
 				/* translators: %s: Post permalink URL. */
 				__( 'Quote published. <a href="%s">View quote</a>', 'sof-quotes' ),
 				esc_url( get_permalink( $post_ID ) )
 			),
 
 			// Item saved.
-			7 => __( 'Quote saved.', 'sof-quotes' ),
+			7  => __( 'Quote saved.', 'sof-quotes' ),
 
 			// Item submitted.
-			8 => sprintf(
+			8  => sprintf(
 				/* translators: %s: Post preview URL. */
 				__( 'Quote submitted. <a target="_blank" href="%s">Preview quote</a>', 'sof-quotes' ),
 				esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) )
 			),
 
 			// Item scheduled.
-			9 => sprintf(
+			9  => sprintf(
 				/* translators: 1: Publish box date format, see http://php.net/date, 2: Post date, 3: Post permalink. */
 				__( 'Quote scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview quote</a>', 'sof-quotes' ),
 				/* translators: Publish box date format, see http://php.net/date */
-				date_i18n( __( 'M j, Y @ G:i', 'sof-quotes' ),
-				strtotime( $post->post_date ) ),
+				date_i18n( __( 'M j, Y @ G:i', 'sof-quotes' ), strtotime( $post->post_date ) ),
 				esc_url( get_permalink( $post_ID ) )
 			),
 
@@ -374,10 +376,10 @@ class Spirit_Of_Football_Quotes_CPT {
 		$args = [
 
 			// Same as "category".
-			'hierarchical' => true,
+			'hierarchical'      => true,
 
 			// Labels.
-			'labels' => [
+			'labels'            => [
 				'name'              => _x( 'Quote Types', 'taxonomy general name', 'sof-quotes' ),
 				'singular_name'     => _x( 'Quote Type', 'taxonomy singular name', 'sof-quotes' ),
 				'menu_name'         => __( 'Quote Types', 'sof-quotes' ),
@@ -393,18 +395,18 @@ class Spirit_Of_Football_Quotes_CPT {
 			],
 
 			// Rewrite rules.
-			'rewrite' => [
-				'slug' => 'quotes/types',
+			'rewrite'           => [
+				'slug'       => 'quotes/types',
 				'with_front' => true,
 			],
 
 			// Show column in wp-admin.
 			'show_admin_column' => true,
-			'show_ui' => true,
+			'show_ui'           => true,
 
 			// REST setup.
-			'show_in_rest' => true,
-			'rest_base' => $this->taxonomy_rest_base,
+			'show_in_rest'      => true,
+			'rest_base'         => $this->taxonomy_rest_base,
 
 		];
 
@@ -424,7 +426,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	 * @since 0.1
 	 *
 	 * @param array $args The existing arguments.
-	 * @param int $post_id The WordPress post ID.
+	 * @param int   $post_id The WordPress post ID.
 	 */
 	public function taxonomy_primary_metabox_fix( $args, $post_id ) {
 
@@ -452,27 +454,30 @@ class Spirit_Of_Football_Quotes_CPT {
 		global $typenow;
 
 		// Bail if not our post type.
-		if ( $typenow != $this->post_type_name ) {
+		if ( $typenow !== $this->post_type_name ) {
 			return;
 		}
 
 		// Get tax object.
 		$taxonomy = get_taxonomy( $this->taxonomy_name );
 
-		// Show a dropdown.
-		wp_dropdown_categories( [
+		// Build args.
+		$args = [
 			/* translators: %s: The plural name of the taxonomy terms. */
 			'show_option_all' => sprintf( __( 'Show All %s', 'sof-quotes' ), $taxonomy->label ),
-			'taxonomy' => $this->taxonomy_name,
-			'name' => $this->taxonomy_name,
-			'orderby' => 'name',
+			'taxonomy'        => $this->taxonomy_name,
+			'name'            => $this->taxonomy_name,
+			'orderby'         => 'name',
 			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Recommended
-			'selected' => isset( $_GET[ $this->taxonomy_name ] ) ? wp_unslash( $_GET[ $this->taxonomy_name ] ) : '',
-			'show_count' => true,
-			'hide_empty' => true,
-			'value_field' => 'slug',
-			'hierarchical' => 1,
-		] );
+			'selected'        => isset( $_GET[ $this->taxonomy_name ] ) ? wp_unslash( $_GET[ $this->taxonomy_name ] ) : '',
+			'show_count'      => true,
+			'hide_empty'      => true,
+			'value_field'     => 'slug',
+			'hierarchical'    => 1,
+		];
+
+		// Show a dropdown.
+		wp_dropdown_categories( $args );
 
 	}
 
@@ -495,11 +500,11 @@ class Spirit_Of_Football_Quotes_CPT {
 		$args = [
 
 			// General.
-			'public' => true,
-			'hierarchical' => false,
+			'public'            => true,
+			'hierarchical'      => false,
 
 			// Labels.
-			'labels' => [
+			'labels'            => [
 				'name'                       => _x( 'Quote Tags', 'taxonomy general name', 'sof-quotes' ),
 				'singular_name'              => _x( 'Quote Tag', 'taxonomy singular name', 'sof-quotes' ),
 				'menu_name'                  => __( 'Quote Tags', 'sof-quotes' ),
@@ -517,18 +522,18 @@ class Spirit_Of_Football_Quotes_CPT {
 			],
 
 			// Permalinks.
-			'rewrite' => [
-				'slug' => 'quotes/tags',
+			'rewrite'           => [
+				'slug'       => 'quotes/tags',
 				'with_front' => true,
 			],
 
 			// Show column in wp-admin.
 			'show_admin_column' => true,
-			'show_ui' => true,
+			'show_ui'           => true,
 
 			// REST setup.
-			'show_in_rest' => true,
-			'rest_base' => $this->taxonomy_free_rest_base,
+			'show_in_rest'      => true,
+			'rest_base'         => $this->taxonomy_free_rest_base,
 
 		];
 

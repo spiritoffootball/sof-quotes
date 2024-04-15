@@ -99,7 +99,7 @@ class Spirit_Of_Football_Quotes {
 
 		// Only do this once.
 		static $done;
-		if ( isset( $done ) && $done === true ) {
+		if ( isset( $done ) && true === $done ) {
 			return;
 		}
 
@@ -144,10 +144,10 @@ class Spirit_Of_Football_Quotes {
 	public function setup_globals() {
 
 		// Instantiate objects.
-		$this->cpt = new Spirit_Of_Football_Quotes_CPT( $this );
-		$this->metabox = new Spirit_Of_Football_Quotes_Metabox( $this );
+		$this->cpt        = new Spirit_Of_Football_Quotes_CPT( $this );
+		$this->metabox    = new Spirit_Of_Football_Quotes_Metabox( $this );
 		$this->shortcodes = new Spirit_Of_Football_Quotes_Shortcodes( $this );
-		$this->acf = new Spirit_Of_Football_Quotes_ACF( $this );
+		$this->acf        = new Spirit_Of_Football_Quotes_ACF( $this );
 
 	}
 

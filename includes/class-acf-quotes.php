@@ -112,14 +112,14 @@ class Spirit_Of_Football_Quotes_ACF {
 			[
 				// Statement Quote.
 				[
-					'param' => 'post_type',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value' => $this->plugin->cpt->post_type_name,
+					'value'    => $this->plugin->cpt->post_type_name,
 				],
 				[
-					'param' => 'post_taxonomy',
+					'param'    => 'post_taxonomy',
 					'operator' => '==',
-					'value' => $this->plugin->cpt->taxonomy_name . ':' . $this->plugin->cpt->term_statement,
+					'value'    => $this->plugin->cpt->taxonomy_name . ':' . $this->plugin->cpt->term_statement,
 				],
 			],
 		];
@@ -127,24 +127,24 @@ class Spirit_Of_Football_Quotes_ACF {
 		// Hide UI elements on our CPT edit page.
 		$field_group_hide_elements = [
 			'the_content',
-			//'excerpt',
+			// 'excerpt',
 			'discussion',
 			'comments',
-			//'revisions',
+			// 'revisions',
 			'author',
 			'format',
 			'page_attributes',
-			//'featured_image',
+			// 'featured_image',
 			'tags',
 			'send-trackbacks',
 		];
 
 		// Define Field Group.
 		$field_group = [
-			'key' => $this->group_prefix . 'statement',
-			'title' => __( 'Statement Details', 'sof-quotes' ),
-			'fields' => [],
-			'location' => $field_group_location,
+			'key'            => $this->group_prefix . 'statement',
+			'title'          => __( 'Statement Details', 'sof-quotes' ),
+			'fields'         => [],
+			'location'       => $field_group_location,
 			'hide_on_screen' => $field_group_hide_elements,
 		];
 
@@ -174,14 +174,14 @@ class Spirit_Of_Football_Quotes_ACF {
 		$field_group_location = [
 			[
 				[
-					'param' => 'post_type',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value' => $this->plugin->cpt->post_type_name,
+					'value'    => $this->plugin->cpt->post_type_name,
 				],
 				[
-					'param' => 'post_taxonomy',
+					'param'    => 'post_taxonomy',
 					'operator' => '==',
-					'value' => $this->plugin->cpt->taxonomy_name . ':' . $this->plugin->cpt->term_pledge,
+					'value'    => $this->plugin->cpt->taxonomy_name . ':' . $this->plugin->cpt->term_pledge,
 				],
 			],
 		];
@@ -189,24 +189,24 @@ class Spirit_Of_Football_Quotes_ACF {
 		// Hide UI elements on our CPT edit page.
 		$field_group_hide_elements = [
 			'the_content',
-			//'excerpt',
+			// 'excerpt',
 			'discussion',
 			'comments',
-			//'revisions',
+			// 'revisions',
 			'author',
 			'format',
 			'page_attributes',
-			//'featured_image',
+			// 'featured_image',
 			'tags',
 			'send-trackbacks',
 		];
 
 		// Define Field Group.
 		$field_group = [
-			'key' => $this->group_prefix . 'pledge',
-			'title' => __( 'Pledge Details', 'sof-quotes' ),
-			'fields' => [],
-			'location' => $field_group_location,
+			'key'            => $this->group_prefix . 'pledge',
+			'title'          => __( 'Pledge Details', 'sof-quotes' ),
+			'fields'         => [],
+			'location'       => $field_group_location,
 			'hide_on_screen' => $field_group_hide_elements,
 		];
 
@@ -247,14 +247,14 @@ class Spirit_Of_Football_Quotes_ACF {
 
 		// Define Field.
 		$field = [
-			'type' => 'text',
-			'name' => 'source',
-			'parent' => $this->group_prefix . 'statement',
-			'key' => $this->field_statement_prefix . 'source',
-			'label' => __( 'Source of Statement', 'sof-quotes' ),
-			'instructions' => __( 'Who gave or wrote this Statement?', 'sof-quotes' ),
+			'type'          => 'text',
+			'name'          => 'source',
+			'parent'        => $this->group_prefix . 'statement',
+			'key'           => $this->field_statement_prefix . 'source',
+			'label'         => __( 'Source of Statement', 'sof-quotes' ),
+			'instructions'  => __( 'Who gave or wrote this Statement?', 'sof-quotes' ),
 			'default_value' => '',
-			'placeholder' => '',
+			'placeholder'   => '',
 		];
 
 		/*
@@ -272,14 +272,14 @@ class Spirit_Of_Football_Quotes_ACF {
 
 		// Define Field.
 		$field = [
-			'type' => 'text',
-			'name' => 'about',
-			'parent' => $this->group_prefix . 'statement',
-			'key' => $this->field_statement_prefix . 'about',
-			'label' => __( 'About the Source', 'sof-quotes' ),
-			'instructions' => __( 'For example: Job Title and Employer.', 'sof-quotes' ),
+			'type'          => 'text',
+			'name'          => 'about',
+			'parent'        => $this->group_prefix . 'statement',
+			'key'           => $this->field_statement_prefix . 'about',
+			'label'         => __( 'About the Source', 'sof-quotes' ),
+			'instructions'  => __( 'For example: Job Title and Employer.', 'sof-quotes' ),
 			'default_value' => '',
-			'placeholder' => '',
+			'placeholder'   => '',
 		];
 
 		// Now add Field.
@@ -287,15 +287,15 @@ class Spirit_Of_Football_Quotes_ACF {
 
 		// Define Field.
 		$field = [
-			'type' => 'date_picker',
-			'name' => 'date',
-			'parent' => $this->group_prefix . 'statement',
-			'key' => $this->field_statement_prefix . 'date',
-			'label' => __( 'Statement Date', 'sof-quotes' ),
-			'instructions' => __( 'Date of the Statement.', 'sof-quotes' ),
+			'type'           => 'date_picker',
+			'name'           => 'date',
+			'parent'         => $this->group_prefix . 'statement',
+			'key'            => $this->field_statement_prefix . 'date',
+			'label'          => __( 'Statement Date', 'sof-quotes' ),
+			'instructions'   => __( 'Date of the Statement.', 'sof-quotes' ),
 			'display_format' => 'd/m/Y',
-			'return_format' => 'd/m/Y',
-			'first_day' => 1,
+			'return_format'  => 'd/m/Y',
+			'first_day'      => 1,
 		];
 
 		/*
@@ -313,14 +313,14 @@ class Spirit_Of_Football_Quotes_ACF {
 
 		// Define Field.
 		$field = [
-			'type' => 'wysiwyg',
-			'name' => 'content',
-			'parent' => $this->group_prefix . 'statement',
-			'key' => $this->field_statement_prefix . 'content',
-			'label' => __( 'Statement Content', 'sof-quotes' ),
-			'instructions' => __( 'The main text of the Statement.', 'sof-quotes' ),
+			'type'          => 'wysiwyg',
+			'name'          => 'content',
+			'parent'        => $this->group_prefix . 'statement',
+			'key'           => $this->field_statement_prefix . 'content',
+			'label'         => __( 'Statement Content', 'sof-quotes' ),
+			'instructions'  => __( 'The main text of the Statement.', 'sof-quotes' ),
 			'default_value' => '',
-			'placeholder' => '',
+			'placeholder'   => '',
 		];
 
 		// Now add Field.
@@ -328,22 +328,22 @@ class Spirit_Of_Football_Quotes_ACF {
 
 		// Define Field.
 		$field = [
-			'type' => 'image',
-			'name' => 'image',
-			'parent' => $this->group_prefix . 'statement',
-			'key' => $this->field_statement_prefix . 'image',
-			'label' => __( 'Statement Image', 'sof-quotes' ),
-			'instructions' => __( 'Feature Image of the Statement.', 'sof-quotes' ),
-			'required' => 0,
+			'type'              => 'image',
+			'name'              => 'image',
+			'parent'            => $this->group_prefix . 'statement',
+			'key'               => $this->field_statement_prefix . 'image',
+			'label'             => __( 'Statement Image', 'sof-quotes' ),
+			'instructions'      => __( 'Feature Image of the Statement.', 'sof-quotes' ),
+			'required'          => 0,
 			'conditional_logic' => 0,
-			'preview_size' => 'medium',
-			'acfe_thumbnail' => 0,
-			//'uploader' => 'basic',
-			//'min_size' => 0,
-			//'max_size' => $this->civicrm->attachment->field_max_size_get(),
-			//'mime_types' => $field['mime_types'],
-			'library' => 'all',
-			'return_format' => 'array',
+			'preview_size'      => 'medium',
+			'acfe_thumbnail'    => 0,
+			// 'uploader' => 'basic',
+			// 'min_size' => 0,
+			// 'max_size' => $this->civicrm->attachment->field_max_size_get(),
+			// 'mime_types' => $field['mime_types'],
+			'library'           => 'all',
+			'return_format'     => 'array',
 		];
 
 		// Now add Field.
@@ -360,14 +360,14 @@ class Spirit_Of_Football_Quotes_ACF {
 
 		// Define Field.
 		$field = [
-			'type' => 'text',
-			'name' => 'source',
-			'parent' => $this->group_prefix . 'pledge',
-			'key' => $this->field_pledge_prefix . 'source',
-			'label' => __( 'Source of Pledge', 'sof-quotes' ),
-			'instructions' => __( 'Who said, wrote or made this Pledge? This field is displayed as the citation.', 'sof-quotes' ),
+			'type'          => 'text',
+			'name'          => 'source',
+			'parent'        => $this->group_prefix . 'pledge',
+			'key'           => $this->field_pledge_prefix . 'source',
+			'label'         => __( 'Source of Pledge', 'sof-quotes' ),
+			'instructions'  => __( 'Who said, wrote or made this Pledge? This field is displayed as the citation.', 'sof-quotes' ),
 			'default_value' => '',
-			'placeholder' => '',
+			'placeholder'   => '',
 		];
 
 		/*
@@ -385,14 +385,14 @@ class Spirit_Of_Football_Quotes_ACF {
 
 		// Define Field.
 		$field = [
-			'type' => 'text',
-			'name' => 'about',
-			'parent' => $this->group_prefix . 'pledge',
-			'key' => $this->field_pledge_prefix . 'about',
-			'label' => __( 'About the Source', 'sof-quotes' ),
-			'instructions' => __( 'About Source, e.g. Job Title and Employer. This field is displayed below the citation.', 'sof-quotes' ),
+			'type'          => 'text',
+			'name'          => 'about',
+			'parent'        => $this->group_prefix . 'pledge',
+			'key'           => $this->field_pledge_prefix . 'about',
+			'label'         => __( 'About the Source', 'sof-quotes' ),
+			'instructions'  => __( 'About Source, e.g. Job Title and Employer. This field is displayed below the citation.', 'sof-quotes' ),
 			'default_value' => '',
-			'placeholder' => '',
+			'placeholder'   => '',
 		];
 
 		// Now add Field.
@@ -400,15 +400,15 @@ class Spirit_Of_Football_Quotes_ACF {
 
 		// Define Field.
 		$field = [
-			'type' => 'date_picker',
-			'name' => 'date',
-			'parent' => $this->group_prefix . 'pledge',
-			'key' => $this->field_pledge_prefix . 'date',
-			'label' => __( 'Pledge Date', 'sof-quotes' ),
-			'instructions' => __( 'Date of the Pledge. This field is displayed below the citation.', 'sof-quotes' ),
+			'type'           => 'date_picker',
+			'name'           => 'date',
+			'parent'         => $this->group_prefix . 'pledge',
+			'key'            => $this->field_pledge_prefix . 'date',
+			'label'          => __( 'Pledge Date', 'sof-quotes' ),
+			'instructions'   => __( 'Date of the Pledge. This field is displayed below the citation.', 'sof-quotes' ),
 			'display_format' => 'd/m/Y',
-			'return_format' => 'd/m/Y',
-			'first_day' => 1,
+			'return_format'  => 'd/m/Y',
+			'first_day'      => 1,
 		];
 
 		// Now add Field.
@@ -416,14 +416,14 @@ class Spirit_Of_Football_Quotes_ACF {
 
 		// Define Field.
 		$field = [
-			'type' => 'wysiwyg',
-			'name' => 'content',
-			'parent' => $this->group_prefix . 'pledge',
-			'key' => $this->field_pledge_prefix . 'content',
-			'label' => __( 'Pledge Content', 'sof-quotes' ),
-			'instructions' => __( 'The main text of the Pledge.', 'sof-quotes' ),
+			'type'          => 'wysiwyg',
+			'name'          => 'content',
+			'parent'        => $this->group_prefix . 'pledge',
+			'key'           => $this->field_pledge_prefix . 'content',
+			'label'         => __( 'Pledge Content', 'sof-quotes' ),
+			'instructions'  => __( 'The main text of the Pledge.', 'sof-quotes' ),
 			'default_value' => '',
-			'placeholder' => '',
+			'placeholder'   => '',
 		];
 
 		// Now add Field.
@@ -431,20 +431,20 @@ class Spirit_Of_Football_Quotes_ACF {
 
 		// Define Field.
 		$field = [
-			'type' => 'image',
-			'name' => 'image',
-			'parent' => $this->group_prefix . 'pledge',
-			'key' => $this->field_pledge_prefix . 'image',
-			'label' => __( 'Pledge Image', 'sof-quotes' ),
-			'instructions' => __( 'Feature Image of the Pledge.', 'sof-quotes' ),
-			'required' => 0,
+			'type'              => 'image',
+			'name'              => 'image',
+			'parent'            => $this->group_prefix . 'pledge',
+			'key'               => $this->field_pledge_prefix . 'image',
+			'label'             => __( 'Pledge Image', 'sof-quotes' ),
+			'instructions'      => __( 'Feature Image of the Pledge.', 'sof-quotes' ),
+			'required'          => 0,
 			'conditional_logic' => 0,
-			//'uploader' => 'basic',
-			//'min_size' => 0,
-			//'max_size' => $this->civicrm->attachment->field_max_size_get(),
-			//'mime_types' => $field['mime_types'],
-			'library' => 'all',
-			'return_format' => 'array',
+			// 'uploader' => 'basic',
+			// 'min_size' => 0,
+			// 'max_size' => $this->civicrm->attachment->field_max_size_get(),
+			// 'mime_types' => $field['mime_types'],
+			'library'           => 'all',
+			'return_format'     => 'array',
 		];
 
 		// Now add Field.
@@ -452,20 +452,20 @@ class Spirit_Of_Football_Quotes_ACF {
 
 		// Define Field.
 		$field = [
-			'type' => 'image',
-			'name' => 'card',
-			'parent' => $this->group_prefix . 'pledge',
-			'key' => $this->field_pledge_prefix . 'card',
-			'label' => __( 'Card Image', 'sof-quotes' ),
-			'instructions' => __( 'Pre-designed Pledge Card Image.', 'sof-quotes' ),
-			'required' => 0,
+			'type'              => 'image',
+			'name'              => 'card',
+			'parent'            => $this->group_prefix . 'pledge',
+			'key'               => $this->field_pledge_prefix . 'card',
+			'label'             => __( 'Card Image', 'sof-quotes' ),
+			'instructions'      => __( 'Pre-designed Pledge Card Image.', 'sof-quotes' ),
+			'required'          => 0,
 			'conditional_logic' => 0,
-			//'uploader' => 'basic',
-			//'min_size' => 0,
-			//'max_size' => $this->civicrm->attachment->field_max_size_get(),
-			//'mime_types' => $field['mime_types'],
-			'library' => 'all',
-			'return_format' => 'array',
+			// 'uploader' => 'basic',
+			// 'min_size' => 0,
+			// 'max_size' => $this->civicrm->attachment->field_max_size_get(),
+			// 'mime_types' => $field['mime_types'],
+			'library'           => 'all',
+			'return_format'     => 'array',
 		];
 
 		// Now add Field.

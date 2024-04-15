@@ -85,7 +85,7 @@ class Spirit_Of_Football_Quotes_Shortcode_Single {
 	 *
 	 * @since 0.1
 	 *
-	 * @param array $attr The saved Shortcode attributes.
+	 * @param array  $attr The saved Shortcode attributes.
 	 * @param string $content The enclosed content of the Shortcode.
 	 * @param string $tag The Shortcode which invoked the callback.
 	 * @return string $quote The HTML-formatted Shortcode content.
@@ -97,7 +97,7 @@ class Spirit_Of_Football_Quotes_Shortcode_Single {
 
 		// Default Shortcode attributes.
 		$defaults = [
-			'id' => '',
+			'id'    => '',
 			'align' => 'none',
 		];
 
@@ -111,10 +111,10 @@ class Spirit_Of_Football_Quotes_Shortcode_Single {
 
 		// Define args for query.
 		$query_args = [
-			'post_type' => 'quote',
-			'p' => $atts['id'],
-			'no_found_rows' => true,
-			'post_status' => 'publish',
+			'post_type'      => 'quote',
+			'p'              => $atts['id'],
+			'no_found_rows'  => true,
+			'post_status'    => 'publish',
 			'posts_per_page' => 1,
 		];
 
@@ -153,9 +153,9 @@ class Spirit_Of_Football_Quotes_Shortcode_Single {
 					get_template_part( 'template-parts/content', 'quote-pledge' );
 				elseif ( has_term( 'statement', 'quote-type' ) ) :
 					get_template_part( 'template-parts/content', 'quote-statement' );
-				else:
+				else :
 					include SOF_QUOTES_PATH . 'assets/templates/content-quote-shortcode.php';
-				 endif;
+				endif;
 			endwhile;
 
 			// Get the quote.

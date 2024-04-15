@@ -10,9 +10,9 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-?><!-- metabox-quote.php -->
+?><!-- assets/templates/metabox-quote.php -->
 <p>
-	<input id="<?php echo esc_attr( $this->featured_meta_key ); ?>" name="<?php echo esc_attr( $this->featured_meta_key ); ?>" value="1" type="checkbox" <?php echo ( ( $val == '1' ) ? ' checked="checked"' : '' ); ?>/>
+	<input id="<?php echo esc_attr( $this->featured_meta_key ); ?>" name="<?php echo esc_attr( $this->featured_meta_key ); ?>" value="1" type="checkbox" <?php checked( $val ); ?>/>
 	<strong><label for="<?php echo esc_attr( $this->featured_meta_key ); ?>"><?php esc_html_e( 'Make quote featured', 'sof-quotes' ); ?></label></strong>
 </p>
 

@@ -52,14 +52,14 @@ class SOF_Quote_Widget extends WP_Widget {
 
 		// Define args for query.
 		$quotes_args = [
-			'post_type' => 'quote',
-			'no_found_rows' => true,
-			'post_status' => 'publish',
-			'orderby' => 'rand',
+			'post_type'      => 'quote',
+			'no_found_rows'  => true,
+			'post_status'    => 'publish',
+			'orderby'        => 'rand',
 			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
-			'meta_key' => '_featured_quote',
+			'meta_key'       => '_featured_quote',
 			// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
-			'meta_value' => 1,
+			'meta_value'     => 1,
 			'posts_per_page' => 1,
 		];
 
@@ -73,10 +73,12 @@ class SOF_Quote_Widget extends WP_Widget {
 			$title = apply_filters( 'widget_title', $instance['title'] );
 
 			// Show before.
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo $args['before_widget'];
 
 			// If we have a title, show it.
 			if ( ! empty( $title ) ) {
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo $args['before_title'] . $title . $args['after_title'];
 			}
 
@@ -96,9 +98,11 @@ class SOF_Quote_Widget extends WP_Widget {
 			$quote = str_replace( '<a class="post-edit-link', '<a class="post-edit-link button', $quote );
 
 			// Show markup.
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo $quote;
 
 			// Show after.
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo $args['after_widget'];
 
 			// Reset the post globals as this query will have stomped on it.
@@ -129,10 +133,10 @@ class SOF_Quote_Widget extends WP_Widget {
 		?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>">
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
 				<?php esc_html_e( 'Title:', 'sof-quotes' ); ?>
 			</label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
 
 		<?php
