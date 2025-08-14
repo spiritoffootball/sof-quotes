@@ -78,7 +78,7 @@ class Spirit_Of_Football_Quotes_Shortcode_Slider {
 
 	}
 
-	// -------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------
 
 	/**
 	 * Adds a Quote Slider to a page/post via a Shortcode.
