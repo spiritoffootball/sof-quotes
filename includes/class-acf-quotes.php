@@ -151,16 +151,6 @@ class Spirit_Of_Football_Quotes_ACF {
 		// Now add the Field Group.
 		acf_add_local_field_group( $field_group );
 
-		/*
-		$e = new \Exception();
-		$trace = $e->getTraceAsString();
-		error_log( print_r( [
-			'method' => __METHOD__,
-			'field_group' => $field_group,
-			//'backtrace' => $trace,
-		], true ) );
-		*/
-
 	}
 
 	/**
@@ -213,16 +203,6 @@ class Spirit_Of_Football_Quotes_ACF {
 		// Now add the Field Group.
 		acf_add_local_field_group( $field_group );
 
-		/*
-		$e = new \Exception();
-		$trace = $e->getTraceAsString();
-		error_log( print_r( [
-			'method' => __METHOD__,
-			'field_group' => $field_group,
-			//'backtrace' => $trace,
-		], true ) );
-		*/
-
 	}
 
 	/**
@@ -257,16 +237,6 @@ class Spirit_Of_Football_Quotes_ACF {
 			'placeholder'   => '',
 		];
 
-		/*
-		$e = new \Exception();
-		$trace = $e->getTraceAsString();
-		error_log( print_r( [
-			'method' => __METHOD__,
-			'field' => $field,
-			//'backtrace' => $trace,
-		], true ) );
-		*/
-
 		// Now add Field.
 		acf_add_local_field( $field );
 
@@ -297,16 +267,6 @@ class Spirit_Of_Football_Quotes_ACF {
 			'return_format'  => 'd/m/Y',
 			'first_day'      => 1,
 		];
-
-		/*
-		$e = new \Exception();
-		$trace = $e->getTraceAsString();
-		error_log( print_r( [
-			'method' => __METHOD__,
-			'field' => $field,
-			//'backtrace' => $trace,
-		], true ) );
-		*/
 
 		// Now add Field.
 		acf_add_local_field( $field );
@@ -369,16 +329,6 @@ class Spirit_Of_Football_Quotes_ACF {
 			'default_value' => '',
 			'placeholder'   => '',
 		];
-
-		/*
-		$e = new \Exception();
-		$trace = $e->getTraceAsString();
-		error_log( print_r( [
-			'method' => __METHOD__,
-			'field' => $field,
-			//'backtrace' => $trace,
-		], true ) );
-		*/
 
 		// Now add Field.
 		acf_add_local_field( $field );
