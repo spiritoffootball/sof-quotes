@@ -4,10 +4,10 @@
  *
  * Plugin Name: SOF Quotes
  * Description: Provides Quotes and associated functionality.
+ * Version:     1.0.1
  * Plugin URI:  https://github.com/spiritoffootball/sof-quotes
  * Author:      Christian Wach
  * Author URI:  https://haystack.co.uk
- * Version:     1.0.1
  * Text Domain: sof-quotes
  * Domain Path: /languages
  *
