@@ -127,13 +127,13 @@ class Spirit_Of_Football_Quotes {
 	 *
 	 * @since 0.1
 	 */
-	public function include_files() {
+	private function include_files() {
 
 		// Include files.
-		include_once SOF_QUOTES_PATH . 'includes/class-cpt-quotes.php';
-		include_once SOF_QUOTES_PATH . 'includes/class-metabox-quotes.php';
-		include_once SOF_QUOTES_PATH . 'includes/class-shortcodes.php';
-		include_once SOF_QUOTES_PATH . 'includes/class-acf-quotes.php';
+		require SOF_QUOTES_PATH . 'includes/class-cpt-quotes.php';
+		require SOF_QUOTES_PATH . 'includes/class-metabox-quotes.php';
+		require SOF_QUOTES_PATH . 'includes/class-shortcodes.php';
+		require SOF_QUOTES_PATH . 'includes/class-acf-quotes.php';
 
 	}
 
@@ -142,7 +142,7 @@ class Spirit_Of_Football_Quotes {
 	 *
 	 * @since 0.1
 	 */
-	public function setup_globals() {
+	private function setup_globals() {
 
 		// Instantiate objects.
 		$this->cpt        = new Spirit_Of_Football_Quotes_CPT( $this );
@@ -157,7 +157,7 @@ class Spirit_Of_Football_Quotes {
 	 *
 	 * @since 0.1
 	 */
-	public function register_hooks() {
+	private function register_hooks() {
 
 		// Use translation.
 		add_action( 'init', [ $this, 'translation' ] );

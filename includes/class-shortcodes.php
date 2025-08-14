@@ -72,6 +72,12 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 	 */
 	public function initialise() {
 
+		// Only do this once.
+		static $done;
+		if ( isset( $done ) && true === $done ) {
+			return;
+		}
+
 		// Register Shortcodes.
 		$this->include_files();
 		$this->setup_globals();
@@ -83,6 +89,9 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 		 */
 		do_action( 'sof_quotes/shortcodes/loaded' );
 
+		// We're done.
+		$done = true;
+
 	}
 
 	/**
@@ -90,11 +99,11 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 	 *
 	 * @since 0.1
 	 */
-	public function include_files() {
+	private function include_files() {
 
 		// Include files.
-		include_once SOF_QUOTES_PATH . 'includes/class-shortcode-quote-single.php';
-		include_once SOF_QUOTES_PATH . 'includes/class-shortcode-quote-slider.php';
+		require SOF_QUOTES_PATH . 'includes/class-shortcode-quote-single.php';
+		require SOF_QUOTES_PATH . 'includes/class-shortcode-quote-slider.php';
 
 	}
 
@@ -103,7 +112,7 @@ class Spirit_Of_Football_Quotes_Shortcodes {
 	 *
 	 * @since 0.1
 	 */
-	public function setup_globals() {
+	private function setup_globals() {
 
 		// Instantiate objects.
 		$this->single = new Spirit_Of_Football_Quotes_Shortcode_Single( $this );
