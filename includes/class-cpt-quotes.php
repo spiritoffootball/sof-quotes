@@ -134,7 +134,7 @@ class Spirit_Of_Football_Quotes_CPT {
 		 *
 		 * @since 0.1.1
 		 */
-		do_action( 'sof_orgs/cpt/loaded' );
+		do_action( 'sof_quotes/cpt/loaded' );
 
 	}
 

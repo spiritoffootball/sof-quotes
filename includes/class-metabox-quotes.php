@@ -71,7 +71,7 @@ class Spirit_Of_Football_Quotes_Metabox {
 		 *
 		 * @since 0.1.1
 		 */
-		do_action( 'sof_orgs/metabox/loaded' );
+		do_action( 'sof_quotes/metabox/loaded' );
 
 	}
 
