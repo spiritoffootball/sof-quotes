@@ -229,11 +229,20 @@ class Spirit_Of_Football_Quotes {
 	 */
 	public function register_widgets() {
 
+		// Only do this once.
+		static $done;
+		if ( isset( $done ) && true === $done ) {
+			return;
+		}
+
 		// Include widgets.
-		require_once SOF_QUOTES_PATH . 'widgets/sof-quotes-widget-random.php';
+		require SOF_QUOTES_PATH . 'widgets/class-widget-quotes-random.php';
 
 		// Register widgets.
 		register_widget( 'SOF_Quote_Widget' );
+
+		// We're done.
+		$done = true;
 
 	}
 
