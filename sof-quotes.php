@@ -106,7 +106,6 @@ class Spirit_Of_Football_Quotes {
 		}
 
 		// Bootstrap plugin.
-		$this->translation();
 		$this->include_files();
 		$this->setup_globals();
 		$this->register_hooks();
@@ -159,6 +158,9 @@ class Spirit_Of_Football_Quotes {
 	 * @since 0.1
 	 */
 	public function register_hooks() {
+
+		// Use translation.
+		add_action( 'init', [ $this, 'translation' ] );
 
 		// Initialise widgets.
 		add_action( 'widgets_init', [ $this, 'register_widgets' ] );
