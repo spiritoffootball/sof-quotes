@@ -403,6 +403,8 @@ class Spirit_Of_Football_Quotes_CPT {
 			// Show column in wp-admin.
 			'show_admin_column' => true,
 			'show_ui'           => true,
+			'show_in_menu'      => true,
+			'show_in_nav_menus' => false,
 
 			// REST setup.
 			'show_in_rest'      => true,
