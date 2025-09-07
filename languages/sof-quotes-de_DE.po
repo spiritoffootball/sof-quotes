@@ -6,7 +6,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2022-10-20 12:09+0000\n"
+"PO-Revision-Date: 2025-09-07 17:15+0000\n"
 "Last-Translator: Site Admin\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -14,99 +14,249 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.6.2; wp-6.0.3"
 
+#: includes/class-cpt-quotes.php:233
+msgid "A quote post type"
+msgstr "Ein Zitate-Beitragstyp"
+
+#: includes/class-acf-quotes.php:343
+msgid ""
+"About Source, e.g. Job Title and Employer. This field is displayed below the "
+"citation."
+msgstr ""
+"Informationen zur Quelle, z. B. Berufsbezeichnung und Arbeitgeber. Diese "
+"Angaben werden unter dem Zitat angezeigt."
+
+#: includes/class-acf-quotes.php:249 includes/class-acf-quotes.php:342
+msgid "About the Source"
+msgstr "Informationen zur Quelle"
+
+#: includes/class-cpt-quotes.php:210
 msgid "Add New Quote"
 msgstr "Zitat hinzufügen"
 
+#: includes/class-cpt-quotes.php:517
+msgid "Add New Quote Tag"
+msgstr "Neuen Zitat-Schlagwort hinzufügen"
+
+#: includes/class-cpt-quotes.php:390
+msgid "Add New Quote Type"
+msgstr "Neuen Zitatentyp hinzufügen"
+
+#: includes/class-cpt-quotes.php:522
+msgid "Add or remove Quote Tag"
+msgstr "Zitat-Schlagwort hinzufügen oder entfernen"
+
+#: includes/class-cpt-quotes.php:514
+msgid "All Quote Tags"
+msgstr "Alle Zitat-Schlagwörter"
+
+#: includes/class-cpt-quotes.php:387
+msgid "All Quote Types"
+msgstr "Alle Zitattypen"
+
+#: includes/class-cpt-quotes.php:213
 msgid "All Quotes"
 msgstr "Alle Zitate"
 
+#: includes/class-acf-quotes.php:409
+msgid "Card Image"
+msgstr "Kartenbild"
+
+#: includes/class-cpt-quotes.php:523
+msgid "Choose from the most popular Quote Tags"
+msgstr "Wählen Sie aus den beliebtesten Zitat-Schlagwörter aus"
+
 #. Author of the plugin
+#: sof-quotes.php
 msgid "Christian Wach"
 msgstr "Christian Wach"
 
+#: includes/class-cpt-quotes.php:302
 msgid "Custom field deleted."
 msgstr "Benutzerdefiniertes Feld gelöscht."
 
+#: includes/class-cpt-quotes.php:301
 msgid "Custom field updated."
 msgstr "Benutzerdefiniertes Feld aktualisiert."
 
-msgid "Edit"
-msgstr "Bearbeiten"
+#: includes/class-acf-quotes.php:358
+msgid "Date of the Pledge. This field is displayed below the citation."
+msgstr "Datum des Versprechens. Dieses Feld wird unter dem Zitat angezeigt."
 
+#: includes/class-acf-quotes.php:265
+msgid "Date of the Statement."
+msgstr "Datum der Erklärung."
+
+#: assets/templates/content-quote-random.php:34
+#: assets/templates/content-quote-shortcode.php:21
+#: includes/class-cpt-quotes.php:211
 msgid "Edit Quote"
 msgstr "Zitat bearbeiten"
 
+#: includes/class-cpt-quotes.php:515
+msgid "Edit Quote Tag"
+msgstr "Zitat-Schlagwort bearbeiten"
+
+#: includes/class-cpt-quotes.php:388
+msgid "Edit Quote Type"
+msgstr "Zitatentyp bearbeiten"
+
+#: includes/class-acf-quotes.php:389
+msgid "Feature Image of the Pledge."
+msgstr "Hauptbild des Versprechens."
+
+#: includes/class-acf-quotes.php:296
+msgid "Feature Image of the Statement."
+msgstr "Hauptbild der Erklärung."
+
+#: includes/class-metabox-quotes.php:106
 msgid "Featured"
 msgstr "Vorgestellt"
 
+#: widgets/class-widget-quotes-random.php:130
 msgid "Featured Quote"
 msgstr "Vorgestelltes Zitat"
 
+#: includes/class-acf-quotes.php:250
+msgid "For example: Job Title and Employer."
+msgstr "Beispielsweise: Berufsbezeichnung und Arbeitgeber."
+
 #. Plugin URI of the plugin
+#: sof-quotes.php
 msgid "https://github.com/spiritoffootball/sof-quotes"
 msgstr "https://github.com/spiritoffootball/sof-quotes"
 
 #. Author URI of the plugin
+#: sof-quotes.php
 msgid "https://haystack.co.uk"
 msgstr "https://haystack.co.uk"
 
 #. translators: Publish box date format, see http://php.net/date
+#: includes/class-cpt-quotes.php:342
 msgid "M j, Y @ G:i"
-msgstr ""
+msgstr "M j, Y @ G:i"
 
+#: assets/templates/metabox-quote.php:16
 msgid "Make quote featured"
 msgstr "Zitat vorgestellt machen"
 
+#: includes/class-cpt-quotes.php:212
 msgid "New Quote"
 msgstr "Neuer Zitat"
 
+#: includes/class-cpt-quotes.php:518
+msgid "New Quote Tag Name"
+msgstr "Neuer Name für Zitat-Schlagwort"
+
+#: includes/class-cpt-quotes.php:391
+msgid "New Quote Type Name"
+msgstr "Neuer Name für Zitatentyp"
+
+#: includes/class-cpt-quotes.php:221
 msgid "No matching Quote found"
 msgstr "Kein Zitat gefunden"
 
+#: includes/class-cpt-quotes.php:519
+msgid "No Quote Tags found"
+msgstr "Keine Zitat-Schlagwörter gefunden"
+
+#: includes/class-cpt-quotes.php:392
+msgid "No Quote Types found"
+msgstr "Keine Zitattypen gefunden"
+
+#: includes/class-cpt-quotes.php:222
 msgid "No Quotes found in Trash"
 msgstr "Keine Zitate im Papierkorb gefunden"
 
+#: includes/class-cpt-quotes.php:393
+msgid "Parent Quote Type"
+msgstr "Übergeordnete Zitatentyp"
+
+#: includes/class-cpt-quotes.php:394
+msgid "Parent Quote Type:"
+msgstr "Übergeordnete Zitatentyp:"
+
+#: includes/class-acf-quotes.php:373
+msgid "Pledge Content"
+msgstr "Versprechensinhalt"
+
+#: includes/class-acf-quotes.php:357
+msgid "Pledge Date"
+msgstr "Versprechensdatum"
+
+#: includes/class-acf-quotes.php:197
+msgid "Pledge Details"
+msgstr "Versprechensdetail"
+
+#: includes/class-acf-quotes.php:388
+msgid "Pledge Image"
+msgstr "Versprechensbild"
+
+#: includes/class-cpt-quotes.php:520
+msgid "Popular Quote Tags"
+msgstr "Beliebte Zitat-Schlagwörter"
+
+#: includes/class-acf-quotes.php:410
+msgid "Pre-designed Pledge Card Image."
+msgstr "Vorgefertigtes Bild für das Versprechen."
+
 #. Description of the plugin
+#: sof-quotes.php
 msgid "Provides Quotes and associated functionality."
 msgstr "Bietet Zitate und zugehörige Funktionen."
 
+#: includes/class-cpt-quotes.php:208
 msgid "Quote"
 msgstr "Zitat"
 
+#: includes/class-cpt-quotes.php:209
 msgctxt "quote"
 msgid "Add New"
 msgstr "Erstellen"
 
+#: widgets/class-widget-quotes-random.php:37
 msgid "Quote (Random Featured)"
 msgstr "Zitat (wahllos)"
 
 #. translators: %s: Post preview URL.
+#: includes/class-cpt-quotes.php:349
+#, php-format
 msgid "Quote draft updated. <a target=\"_blank\" href=\"%s\">Preview quote</a>"
 msgstr ""
 "Zitatsentwurf aktualisiert. <a target=\"_blank\" href=\"%s\">Zitat "
 "Vorschau</a>"
 
+#: includes/class-cpt-quotes.php:216
 msgid "Quote published privately."
 msgstr "Zitat privat veröffentlicht."
 
+#: includes/class-cpt-quotes.php:215
 msgid "Quote published."
 msgstr "Zitat veröffentlicht."
 
 #. translators: %s: Post permalink URL.
+#: includes/class-cpt-quotes.php:323
+#, php-format
 msgid "Quote published. <a href=\"%s\">View quote</a>"
 msgstr "Zitat veröffentlicht. <a href=\"%s\">Zitat ansehen</a>"
 
 #. translators: %s: Title of the revision.
+#: includes/class-cpt-quotes.php:312
+#, php-format
 msgid "Quote restored to revision from %s"
 msgstr "Zitat in Revision von %s wiederhergestellt"
 
+#: includes/class-cpt-quotes.php:217
 msgid "Quote reverted to draft."
 msgstr "Zitat auf Entwurf zurückgesetzt."
 
+#: includes/class-cpt-quotes.php:328
 msgid "Quote saved."
 msgstr "Zitat aktualisiert."
 
 #. translators: 1: Publish box date format, see http://php.net/date, 2: Post date, 3: Post permalink.
+#: includes/class-cpt-quotes.php:340
+#, php-format
 msgid ""
 "Quote scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" "
 "href=\"%2$s\">Preview quote</a>"
@@ -114,38 +264,148 @@ msgstr ""
 "Zitat geplant für: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s\">"
 "Zitat Vorschau</a>"
 
+#: includes/class-cpt-quotes.php:218
 msgid "Quote scheduled."
 msgstr "Zitat geplant."
 
 #. translators: %s: Post preview URL.
+#: includes/class-cpt-quotes.php:333
+#, php-format
 msgid "Quote submitted. <a target=\"_blank\" href=\"%s\">Preview quote</a>"
 msgstr "Quote submitted. <a target=\"_blank\" href=\"%s\">Preview quote</a>"
 
+#: includes/class-cpt-quotes.php:512
+msgid "Quote Tags"
+msgstr "Zitat-Schlagwörter"
+
+#: includes/class-cpt-quotes.php:385
+msgid "Quote Types"
+msgstr "Zitattypen"
+
+#: includes/class-cpt-quotes.php:219 includes/class-cpt-quotes.php:303
 msgid "Quote updated."
 msgstr "Zitat aktualisiert."
 
 #. translators: %s: Post permalink URL.
+#: includes/class-cpt-quotes.php:296
+#, php-format
 msgid "Quote updated. <a href=\"%s\">View quote</a>"
 msgstr "Zitat aktualisiert. <a href=\"%s\">Zitat ansehen</a>"
 
+#: includes/class-cpt-quotes.php:207 includes/class-cpt-quotes.php:224
 msgid "Quotes"
 msgstr "Zitate"
 
+#: includes/class-cpt-quotes.php:513
+msgid "Search Quote Tags"
+msgstr "Zitat-Schlagwörter suchen"
+
+#: includes/class-cpt-quotes.php:386
+msgid "Search Quote Types"
+msgstr "Zitattypen suchen"
+
+#: includes/class-cpt-quotes.php:220
 msgid "Search Quotes"
 msgstr "Zitate suchen"
 
+#: includes/class-cpt-quotes.php:521
+msgid "Separate Quote Tags with commas"
+msgstr "Trennen Sie die Zitat-Schlagwörter mit Kommas."
+
+#: assets/templates/metabox-quote.php:22
 msgid "Shortcode"
-msgstr ""
+msgstr "Shortcode"
+
+#. translators: %s: The plural name of the taxonomy terms.
+#: includes/class-cpt-quotes.php:469
+#, php-format
+msgid "Show All %s"
+msgstr "Alle %s anzeigen"
 
 #. Plugin Name of the plugin
+#: sof-quotes.php
 msgid "SOF Quotes"
 msgstr "SOF Zitate"
 
+#: includes/class-acf-quotes.php:327
+msgid "Source of Pledge"
+msgstr "Quelle des Versprechens"
+
+#: includes/class-acf-quotes.php:234
+msgid "Source of Statement"
+msgstr "Quelle der Erklärung"
+
+#: includes/class-acf-quotes.php:280
+msgid "Statement Content"
+msgstr "Inhalt der Erklärung"
+
+#: includes/class-acf-quotes.php:264
+msgid "Statement Date"
+msgstr "Erklärungsdatum"
+
+#: includes/class-acf-quotes.php:145
+msgid "Statement Details"
+msgstr "Erklärungdetails"
+
+#: includes/class-acf-quotes.php:295
+msgid "Statement Image"
+msgstr "Erklärung Bild"
+
+#: includes/class-cpt-quotes.php:510
+msgctxt "taxonomy general name"
+msgid "Quote Tags"
+msgstr "Zitat-Schlagwörter"
+
+#: includes/class-cpt-quotes.php:383
+msgctxt "taxonomy general name"
+msgid "Quote Types"
+msgstr "Zitattypen"
+
+#: includes/class-cpt-quotes.php:511
+msgctxt "taxonomy singular name"
+msgid "Quote Tag"
+msgstr "Zitat-Schlagwort"
+
+#: includes/class-cpt-quotes.php:384
+msgctxt "taxonomy singular name"
+msgid "Quote Type"
+msgstr "Zitatentyp"
+
+#: includes/class-acf-quotes.php:374
+msgid "The main text of the Pledge."
+msgstr "Der Haupttext der Erklärung."
+
+#: includes/class-acf-quotes.php:281
+msgid "The main text of the Statement."
+msgstr "Der Haupttext der Erklärung."
+
+#: widgets/class-widget-quotes-random.php:137
 msgid "Title:"
 msgstr "Titel:"
 
+#: includes/class-cpt-quotes.php:516
+msgid "Update Quote Tag"
+msgstr "Zitat-Schlagwort aktualisieren"
+
+#: includes/class-cpt-quotes.php:389
+msgid "Update Quote Type"
+msgstr "Zitatentyp aktualisieren"
+
+#: widgets/class-widget-quotes-random.php:29
 msgid "Use this widget to show a random featured quote."
 msgstr "Verwenden Sie dieses Widget, um ein wahlloses Zitat anzuzeigen."
 
+#: includes/class-cpt-quotes.php:214
 msgid "View Quote"
 msgstr "Zitat ansehen"
+
+#: includes/class-acf-quotes.php:235
+msgid "Who gave or wrote this Statement?"
+msgstr "Wer hat diese Erklärung abgegeben oder verfasst?"
+
+#: includes/class-acf-quotes.php:328
+msgid ""
+"Who said, wrote or made this Pledge? This field is displayed as the citation."
+msgstr ""
+"Wer hat dieses Versprechen abgegeben, geschrieben oder ausgesprochen? Dieser "
+"Text wird als Zitat angezeigt."
