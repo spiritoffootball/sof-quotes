@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bundle name="SOF Quotes">
+	<domain name="sof-quotes">
+		<project name="SOF Quotes" slug="sof-quotes">
+			<source>
+				<directory>.</directory>
+			</source>
+			<target>
+				<directory>languages</directory>
+			</target>
+			<template>
+				<file>languages/sof-quotes.pot</file>
+			</template>
+		</project>
+	</domain>
+</bundle>
