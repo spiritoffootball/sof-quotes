@@ -4,7 +4,7 @@
  *
  * Plugin Name: SOF Quotes
  * Description: Provides Quotes and associated functionality.
- * Version:     1.0.2a
+ * Version:     1.0.2
  * Plugin URI:  https://github.com/spiritoffootball/sof-quotes
  * Author:      Christian Wach
  * Author URI:  https://haystack.co.uk
@@ -18,7 +18,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // Set our version here.
-define( 'SOF_QUOTES_VERSION', '1.0.2a' );
+define( 'SOF_QUOTES_VERSION', '1.0.2' );
 
 // Store reference to this file.
 if ( ! defined( 'SOF_QUOTES_FILE' ) ) {
