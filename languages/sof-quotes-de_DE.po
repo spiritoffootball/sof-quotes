@@ -6,7 +6,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2025-09-09 09:34+0000\n"
+"PO-Revision-Date: 2025-09-09 10:23+0000\n"
 "Last-Translator: Christian Wach\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: includes/class-cpt-quotes.php:233
 msgid "A quote post type"
-msgstr "Eine Kategorie"
+msgstr "Ein Zitat-Posttyp"
 
 #: includes/class-acf-quotes.php:343
 msgid ""
@@ -40,7 +40,7 @@ msgstr "Schlagwort hinzufügen"
 
 #: includes/class-cpt-quotes.php:390
 msgid "Add New Quote Type"
-msgstr "Neue Kategorie hinzufügen"
+msgstr "Kategorie hinzufügen"
 
 #: includes/class-cpt-quotes.php:522
 msgid "Add or remove Quote Tag"
@@ -146,11 +146,11 @@ msgstr "Neuer Zitat"
 
 #: includes/class-cpt-quotes.php:518
 msgid "New Quote Tag Name"
-msgstr "Neuer Schlagwort Name"
+msgstr "Neuer Schlagwortname"
 
 #: includes/class-cpt-quotes.php:391
 msgid "New Quote Type Name"
-msgstr "Neuer Kategorie Name"
+msgstr "Neuer Kategoriename"
 
 #: includes/class-cpt-quotes.php:221
 msgid "No matching Quote found"
@@ -302,7 +302,7 @@ msgstr "Schlagwörter durchsuchen"
 
 #: includes/class-cpt-quotes.php:386
 msgid "Search Quote Types"
-msgstr "Kategorien durchsuchen"
+msgstr "Kategorien suchen"
 
 #: includes/class-cpt-quotes.php:220
 msgid "Search Quotes"
@@ -310,7 +310,7 @@ msgstr "Zitate suchen"
 
 #: includes/class-cpt-quotes.php:521
 msgid "Separate Quote Tags with commas"
-msgstr "Trennen Sie die Schlagwörter mit Kommas."
+msgstr "Schlagwörter mit Kommas trennen"
 
 #: assets/templates/metabox-quote.php:22
 msgid "Shortcode"
