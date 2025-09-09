@@ -100,7 +100,7 @@ class Spirit_Of_Football_Quotes_CPT {
 	 * @access public
 	 * @var string
 	 */
-	public $taxonomy_free_rest_base = 'quote-tags';
+	public $taxonomy_free_rest_base = 'quote-tag';
 
 	/**
 	 * Constructor.
