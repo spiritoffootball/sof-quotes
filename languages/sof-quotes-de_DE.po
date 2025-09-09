@@ -6,17 +6,17 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2025-09-07 17:15+0000\n"
-"Last-Translator: Site Admin\n"
+"PO-Revision-Date: 2025-09-09 09:29+0000\n"
+"Last-Translator: Christian Wach\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.2; wp-6.0.3"
+"X-Loco-Version: 2.8.0; wp-6.8.2; php-8.2.4"
 
 #: includes/class-cpt-quotes.php:233
 msgid "A quote post type"
-msgstr "Ein Zitate-Beitragstyp"
+msgstr "Eine Kategorie"
 
 #: includes/class-acf-quotes.php:343
 msgid ""
@@ -36,23 +36,23 @@ msgstr "Zitat hinzufügen"
 
 #: includes/class-cpt-quotes.php:517
 msgid "Add New Quote Tag"
-msgstr "Neuen Zitat-Schlagwort hinzufügen"
+msgstr "Neues Schlagwort hinzufügen"
 
 #: includes/class-cpt-quotes.php:390
 msgid "Add New Quote Type"
-msgstr "Neuen Zitatentyp hinzufügen"
+msgstr "Neue Kategorie hinzufügen"
 
 #: includes/class-cpt-quotes.php:522
 msgid "Add or remove Quote Tag"
-msgstr "Zitat-Schlagwort hinzufügen oder entfernen"
+msgstr "Schlagwort hinzufügen oder entfernen"
 
 #: includes/class-cpt-quotes.php:514
 msgid "All Quote Tags"
-msgstr "Alle Zitat-Schlagwörter"
+msgstr "Alle Schlagwörter"
 
 #: includes/class-cpt-quotes.php:387
 msgid "All Quote Types"
-msgstr "Alle Zitattypen"
+msgstr "Alle Kategorien"
 
 #: includes/class-cpt-quotes.php:213
 msgid "All Quotes"
@@ -64,7 +64,7 @@ msgstr "Kartenbild"
 
 #: includes/class-cpt-quotes.php:523
 msgid "Choose from the most popular Quote Tags"
-msgstr "Wählen Sie aus den beliebtesten Zitat-Schlagwörter aus"
+msgstr "Wählen Sie aus den beliebtesten Schlagwörter aus"
 
 #. Author of the plugin
 #: sof-quotes.php
@@ -95,11 +95,11 @@ msgstr "Zitat bearbeiten"
 
 #: includes/class-cpt-quotes.php:515
 msgid "Edit Quote Tag"
-msgstr "Zitat-Schlagwort bearbeiten"
+msgstr "Schlagwort bearbeiten"
 
 #: includes/class-cpt-quotes.php:388
 msgid "Edit Quote Type"
-msgstr "Zitatentyp bearbeiten"
+msgstr "Kategorie bearbeiten"
 
 #: includes/class-acf-quotes.php:389
 msgid "Feature Image of the Pledge."
@@ -146,11 +146,11 @@ msgstr "Neuer Zitat"
 
 #: includes/class-cpt-quotes.php:518
 msgid "New Quote Tag Name"
-msgstr "Neuer Name für Zitat-Schlagwort"
+msgstr "Neuer Name für Schlagwort"
 
 #: includes/class-cpt-quotes.php:391
 msgid "New Quote Type Name"
-msgstr "Neuer Name für Zitatentyp"
+msgstr "Neuer Kategorie Name"
 
 #: includes/class-cpt-quotes.php:221
 msgid "No matching Quote found"
@@ -158,11 +158,11 @@ msgstr "Kein Zitat gefunden"
 
 #: includes/class-cpt-quotes.php:519
 msgid "No Quote Tags found"
-msgstr "Keine Zitat-Schlagwörter gefunden"
+msgstr "Keine Schlagwörter gefunden"
 
 #: includes/class-cpt-quotes.php:392
 msgid "No Quote Types found"
-msgstr "Keine Zitattypen gefunden"
+msgstr "Keine Kategorien gefunden"
 
 #: includes/class-cpt-quotes.php:222
 msgid "No Quotes found in Trash"
@@ -170,11 +170,11 @@ msgstr "Keine Zitate im Papierkorb gefunden"
 
 #: includes/class-cpt-quotes.php:393
 msgid "Parent Quote Type"
-msgstr "Übergeordnete Zitatentyp"
+msgstr "Übergeordnete Kategorie"
 
 #: includes/class-cpt-quotes.php:394
 msgid "Parent Quote Type:"
-msgstr "Übergeordnete Zitatentyp:"
+msgstr "Übergeordnete Kategorie:"
 
 #: includes/class-acf-quotes.php:373
 msgid "Pledge Content"
@@ -194,7 +194,7 @@ msgstr "Versprechensbild"
 
 #: includes/class-cpt-quotes.php:520
 msgid "Popular Quote Tags"
-msgstr "Beliebte Zitat-Schlagwörter"
+msgstr "Beliebte Schlagwörter"
 
 #: includes/class-acf-quotes.php:410
 msgid "Pre-designed Pledge Card Image."
@@ -276,11 +276,11 @@ msgstr "Quote submitted. <a target=\"_blank\" href=\"%s\">Preview quote</a>"
 
 #: includes/class-cpt-quotes.php:512
 msgid "Quote Tags"
-msgstr "Zitat-Schlagwörter"
+msgstr "Schlagwörter"
 
 #: includes/class-cpt-quotes.php:385
 msgid "Quote Types"
-msgstr "Zitattypen"
+msgstr "Kategorien"
 
 #: includes/class-cpt-quotes.php:219 includes/class-cpt-quotes.php:303
 msgid "Quote updated."
@@ -298,11 +298,11 @@ msgstr "Zitate"
 
 #: includes/class-cpt-quotes.php:513
 msgid "Search Quote Tags"
-msgstr "Zitat-Schlagwörter suchen"
+msgstr "Schlagwörter durchsuchen"
 
 #: includes/class-cpt-quotes.php:386
 msgid "Search Quote Types"
-msgstr "Zitattypen suchen"
+msgstr "Kategorien durchsuchen"
 
 #: includes/class-cpt-quotes.php:220
 msgid "Search Quotes"
@@ -310,7 +310,7 @@ msgstr "Zitate suchen"
 
 #: includes/class-cpt-quotes.php:521
 msgid "Separate Quote Tags with commas"
-msgstr "Trennen Sie die Zitat-Schlagwörter mit Kommas."
+msgstr "Trennen Sie die Schlagwörter mit Kommas."
 
 #: assets/templates/metabox-quote.php:22
 msgid "Shortcode"
@@ -354,22 +354,22 @@ msgstr "Erklärung Bild"
 #: includes/class-cpt-quotes.php:510
 msgctxt "taxonomy general name"
 msgid "Quote Tags"
-msgstr "Zitat-Schlagwörter"
+msgstr "Schlagwörter"
 
 #: includes/class-cpt-quotes.php:383
 msgctxt "taxonomy general name"
 msgid "Quote Types"
-msgstr "Zitattypen"
+msgstr "Kategorien"
 
 #: includes/class-cpt-quotes.php:511
 msgctxt "taxonomy singular name"
 msgid "Quote Tag"
-msgstr "Zitat-Schlagwort"
+msgstr "Schlagwort"
 
 #: includes/class-cpt-quotes.php:384
 msgctxt "taxonomy singular name"
 msgid "Quote Type"
-msgstr "Zitatentyp"
+msgstr "Kategorie"
 
 #: includes/class-acf-quotes.php:374
 msgid "The main text of the Pledge."
@@ -385,11 +385,11 @@ msgstr "Titel:"
 
 #: includes/class-cpt-quotes.php:516
 msgid "Update Quote Tag"
-msgstr "Zitat-Schlagwort aktualisieren"
+msgstr "Schlagwort aktualisieren"
 
 #: includes/class-cpt-quotes.php:389
 msgid "Update Quote Type"
-msgstr "Zitatentyp aktualisieren"
+msgstr "Kategorie aktualisieren"
 
 #: widgets/class-widget-quotes-random.php:29
 msgid "Use this widget to show a random featured quote."
