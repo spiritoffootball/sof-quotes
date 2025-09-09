@@ -6,7 +6,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2025-09-09 09:29+0000\n"
+"PO-Revision-Date: 2025-09-09 09:34+0000\n"
 "Last-Translator: Christian Wach\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -36,7 +36,7 @@ msgstr "Zitat hinzufügen"
 
 #: includes/class-cpt-quotes.php:517
 msgid "Add New Quote Tag"
-msgstr "Neues Schlagwort hinzufügen"
+msgstr "Schlagwort hinzufügen"
 
 #: includes/class-cpt-quotes.php:390
 msgid "Add New Quote Type"
@@ -146,7 +146,7 @@ msgstr "Neuer Zitat"
 
 #: includes/class-cpt-quotes.php:518
 msgid "New Quote Tag Name"
-msgstr "Neuer Name für Schlagwort"
+msgstr "Neuer Schlagwort Name"
 
 #: includes/class-cpt-quotes.php:391
 msgid "New Quote Type Name"
