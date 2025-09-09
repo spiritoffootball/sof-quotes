@@ -6,7 +6,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2025-09-09 10:23+0000\n"
+"PO-Revision-Date: 2025-09-09 10:34+0000\n"
 "Last-Translator: Christian Wach\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -298,7 +298,7 @@ msgstr "Zitate"
 
 #: includes/class-cpt-quotes.php:513
 msgid "Search Quote Tags"
-msgstr "Schlagwörter durchsuchen"
+msgstr "Schlagwörter suchen"
 
 #: includes/class-cpt-quotes.php:386
 msgid "Search Quote Types"
